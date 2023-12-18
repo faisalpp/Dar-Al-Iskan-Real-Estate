@@ -1,0 +1,699 @@
+body 
+{
+    margin: 0;
+    padding: 0;
+}
+
+
+/* navbar section start  */
+.navbar 
+{
+     background: linear-gradient(to left top, #45108a, #440d7f, #420a74, #400769, #3d065f);
+     /* background-color:#000006; */
+     padding: 13px 70px 13px 70px;
+}
+#navbarSupportedContent ul li a 
+{
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+}
+#navbarSupportedContent ul li 
+{
+    margin-left: 25px;
+}
+#navbarSupportedContent button 
+{
+    margin-left: 25px;
+}
+
+#navbarSupportedContent button 
+{
+    color: white;
+    font-size: 16px;
+    background-color: #fdc40a;
+    font-weight: 600;
+    border: none;
+    width: 110px;
+    border-radius: 4px;
+}
+#navbarSupportedContent button:hover 
+{
+    background-color: transparent;
+    border: 2px solid #fdc40a;
+}
+.navbar-nav
+{
+    margin-left: auto;
+}
+
+/* navbar section end  */
+
+
+/* header section start  */
+.header-section
+{
+    background: linear-gradient(to left top, #45108a, #440d7f, #420a74, #400769, #3d065f);   
+    /* background-color: #000006;    */
+    height: 500px;
+}
+.header-text h1 
+{
+    color: #fdc40a;
+    font-size: 60px;
+}
+.header-text p 
+{
+    color: white;
+    font-size: 20px;
+}
+.get-button 
+{
+    background-color: #fdc40a;
+    width: 180px;
+    padding: 12px 0px 0px 0px;
+    height: 50px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+}
+
+.get-button:hover 
+{
+    background-color: transparent;
+    border: 2px solid #d5a953;
+    color: #d5a953;
+}
+.arrow-button 
+{
+    background: #af7d7d;
+    border-radius: 50%;
+    padding: 5px 7px 5px 7px;
+    margin-left: 14px;
+    font-size: 13px;
+}
+/* header section end  */
+
+/* about us section start */
+.about-us
+{
+    padding: 50px 0px;
+}
+.about-us-img
+{
+    border: 2px solid #d5a953;
+}
+.about-us h6 
+{
+    color: #d5a953;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.about-us h2
+{
+    color: #3d065f;
+    font-size: 50px;
+    font-weight: 600;
+}
+.about-us p
+{
+    color: gray;
+    font-size: 16px;
+    font-weight: 400;
+}
+.read-button 
+{
+    background-color: #d5a953;
+    width: 180px;
+    padding: 12px 0px 0px 0px;
+    height: 50px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+}
+.read-button:hover 
+{
+    color: #d5a953;
+}
+.read-button:hover 
+{
+    background-color: transparent;
+    border: 2px solid #d5a953;
+}
+
+
+/* counter section start  */
+.user-head
+{
+    color: #3d065f;
+    font-size: 27px;
+    font-weight: 400;
+    margin: 0;
+}
+.user-text
+{
+    color: #d5a953;
+    font-size: 17px;
+    margin: 0;
+    font-weight: 400;
+}
+.user-row 
+{
+    border-top: 1px solid #e1e1e1;
+    padding: 5px 0px 0px 0px;
+    margin-top: 25px;
+}
+
+.user-section
+{
+    display: flex;
+}
+.user-div
+{
+    margin-left: 10px;
+}
+/* counter section end  */
+
+
+
+/* about us section end*/
+
+
+
+/* clock section start*/
+.clock-img
+{
+    margin-top: -450px;
+}
+
+/* clock section end*/
+
+
+/* form section start*/
+.form-select
+{
+    background-color: #f3f9ff;
+    height: 50px;
+}
+
+.form-control
+{
+    background-color: #f3f9ff;
+    height: 50px;
+}
+
+.form-label
+{
+    color: gray;
+    font-size: 18px;
+    font-weight: 400;
+}
+/* form section end*/
+
+
+/* pricing section start*/
+.pricing-section 
+{
+    background-color: #f3f9ff;
+    padding: 100px 0px;
+}
+
+
+.pricing-text h6 
+{
+    color: #d5a953;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.pricing-text h2
+{
+    color: #3d065f;
+    font-size: 50px;
+    font-weight: 600;
+}
+.pricing-text p
+{
+    color: gray;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.card-title
+{
+    color: #d5a953;
+    font-size: 22px;
+    font-weight: 400;
+    margin: 0;
+}
+.card-text
+{
+    color: gray;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.perc-div
+{
+    background-color: #e7e2e2;
+    border-radius: 8px;
+    width: 80px;
+    text-align: center;
+    padding: 10px 0px 0px 0px;
+}
+
+.perc-div h3 
+{
+    color: #d5a953;
+    font-size: 30px;
+    font-weight: 400;
+}
+.perc-div p 
+{
+    color: gray;
+    font-size: 16px;
+}
+.card-body 
+{
+    justify-content: space-between;
+    align-items: baseline;
+}
+.list-group-item-section
+{
+    justify-content: space-between;
+    display: flex;
+}
+.list-group-item-section i 
+{
+    color: #d5a953;
+}
+.list-group-item-section span 
+{
+    color: gray;
+}
+.pricing-text2 
+{
+    color: gray;
+}
+
+.pricing-text3
+{
+    background-color: #0c67a3 !important;
+    color: white;
+    border-radius: 10px;
+    width: 40px;
+    text-align: center;
+    font-size: 14px;
+}
+.pricing-text4
+{
+    background-color: red !important;
+    color: white;
+    border-radius: 10px;
+    width: 40px;
+    text-align: center;
+    font-size: 14px;
+}
+.count-text
+{
+    color: #d5a953;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+}
+.invest-button
+{
+    background-color: #d5a953;
+    color: white;
+    width: 200px;
+    height: 50px;
+    border-radius: 6px;
+    border: none;
+}
+.card
+{
+    border-radius: 10px;
+    width: 100%;
+    padding: 0px 10px;
+}
+.list-group-flush
+{
+    border-radius: 0px 0px 10px 10px !important;
+}
+/* pricing section end*/
+
+
+/* step section start*/
+.step-section h2
+{
+    color: #d5a953;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: right;
+}
+
+.step-section h1
+{
+    color: #3d065f;
+    font-size: 50px;
+    font-weight: 600;
+    text-align: right;
+}
+.step-section h6 
+{
+    color: gray;
+    font-weight: 400;
+    font-size: 18px;
+    text-align: right;
+}
+.create-account h4
+{
+    color: #d5a953;
+    font-size: 25px;
+    font-weight: 400;
+    text-align: right;   
+}
+
+.create-account h6 
+{
+    color: gray;
+    font-weight: 400;
+    font-size: 18px;
+    text-align: right;
+}
+.icon-plus
+{
+    background-color: #d5a953;
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    font-size: 25px;
+    color: white;
+    padding: 13px 0px 0px 0px;
+    border-radius: 6px;
+}
+.counter-text
+{
+    font-size: 40px;
+    color: #f1a19d;
+}
+.Mian-step-section
+{
+    padding: 100px 0px 100px 0px;
+}
+/* step section end*/
+
+
+
+
+/* features section statt  */
+
+.features-section h1
+{
+    color: #3d065f;
+    font-size: 45px;
+    font-weight: 600;
+}
+.features-section h6 
+{
+    color: gray;
+    font-weight: 400;
+    font-size: 18px;
+}
+.features-section h2
+{
+    color: #d5a953;
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.setting-row
+{
+    background-color: #f3f9ff;
+    width: 100%;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    padding: 50px 30px 50px 30px;
+
+}
+
+.custom-color
+{
+    color: #d5a953;
+    font-size: 35px;
+}
+
+.limit-section h2
+{
+    color: #d5a953;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.limit-section h6
+{
+    color: gray;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* .percentage section start  */
+.percentage-div
+{
+    background-color: #e6e7e9;
+    width: 70px;
+    height: 65px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 25px;
+    color: #d5a953;
+    padding: 18px 0px 0px 0px;
+    border-radius: 6px;
+
+}
+.percentage-text
+{
+    font-weight: 400;
+    font-size: 25px;
+}
+.percentage-text
+{
+    font-weight: 400;
+    font-size: 25px;
+}
+.percentage-count
+{
+    font-weight: 400;
+    font-size: 17px;
+    color: #536479;
+    margin-left: 10px;
+}
+
+.refferal-button
+ {
+    background-color: #d5a953;
+    width: 220px;
+    padding: 12px 0px 0px 0px;
+    height: 50px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+}
+.refferal-button:hover {
+    background-color: transparent;
+    border: 2px solid #d5a953;
+}
+.refferal-button:hover {
+    color: #d5a953;
+}
+/* .percentage section end  */
+
+
+/* Convenced section start   */
+.convenced-section
+{
+    background-color: #400768;
+    width: 100%;
+    height: auto;
+    padding: 50px 0px 50px 0px;
+}
+
+/* Convenced section end   */
+
+
+/* contact section start   */
+.footer-list
+{
+    list-style: none;
+    display: flex;
+    padding: 0;
+}
+.footer-list a {
+    text-decoration: none;
+    margin: 0px 20px;
+    color: white;
+}
+
+.footer-section
+{
+    background-color: #400768;
+    width: 100%;
+    height: auto;
+    padding: 30px 0px 0px 0px;
+}
+/* footer section end   */
+
+
+
+/* contact section start  */
+
+.map-section
+{
+    background-color: #f3f9ff;
+    padding: 90px 0px;
+}
+
+
+.map-head
+{
+    color: #3d065f;
+    font-size: 18px;
+    font-weight: 400;
+}
+.map-text
+{
+    color: #d5a953;
+    font-size: 17px;
+    margin: 0;
+    font-weight: 400;
+}
+.map-div
+{
+    border: 2px solid #d5a953;
+    border-radius: 4px;
+    width: 70px;
+    text-align: center !important;
+    height: 70px;
+    padding: 17px 0px 0px 0px;
+}
+.map-div i
+{
+    font-size: 30px;
+    text-align: center !important;
+    color: #d5a953;
+}
+.mapsection-div
+{
+    margin-left: 20px;
+}
+.form-section h2 
+{
+    color: #d5a953;
+    font-size: 40px;
+}
+.form-section
+{
+    background-color: white;
+    border-radius: 4px;
+    border: 1px solid #e5e5e5;
+    padding: 50px 50px 50px 50px;
+}
+
+.form-button 
+{
+    background-color: #d5a953;
+    width: 100%;
+    padding: 12px 0px 0px 0px;
+    height: 50px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+}
+
+
+.table tr th 
+{
+    background-color: #400769;
+    color: white;
+    padding: 20px;
+}
+
+.table tr td button 
+{
+    border: none;
+    background-color: #ee9b00 !important;
+    border-radius: 10px;
+    font-size: 12px;
+    width: 70px;
+    padding: 0px 0px 3px 0px;
+}
+.table tr td 
+{
+    padding: 20px;
+}
+.table 
+{
+    background-color: white;
+    border: 1px solid #e5e5e5;
+}
+
+.deposit-button
+{
+    background-color: #d5a953 !important;
+    border: none;
+    width: 200px;
+    height: 50px;
+    color: white !important;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 4px;
+}
+
+.Withdraw-button
+{
+    background-color: white;
+    border: 2px solid #d5a953 !important;
+    width: 200px;
+    margin-left: 15px;
+    height: 50px;
+    color: #d5a953;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 4px;
+}
+.Withdraw-button:hover 
+{
+    color: #d5a953;
+}
+.card-section
+{
+    background-color: #f3f9ff;
+    padding: 0px 0px 80px 0px;
+}
+.nav-tabs {
+    border-bottom: none;
+    justify-content: center;
+}
+
+.invest-button:hover 
+{
+    background-color: white;
+    border: 1px solid #d5a953;
+    color: #d5a953;
+}
+
+
+.deposit-button:hover 
+{
+    background-color: white !important;
+    border: 2px solid #d5a953 !important;
+    color: #d5a953 !important;
+}
+
+.Withdraw-button:hover 
+{
+    background-color: #d5a953 !important;
+    border: 2px solid #d5a953 !important;
+    color: white !important;
+}
