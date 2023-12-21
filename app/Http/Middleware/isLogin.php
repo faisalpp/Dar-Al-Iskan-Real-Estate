@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use App\Models\Profile;
 
 class isLogin
 {
@@ -17,11 +16,7 @@ class isLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        if($request->session()->has('user') && $request->session()->get('user')['isAdmin'] == 0 ){
-            $user = Profile::where('user_name',session()->get('user')['userName'])->first();
-            if(isset($user->image)){
-                session()->put('user.image',$user->image);
-            }
+        if($request->session()->has('user')){
             return $next($request);
          }else{
              return redirect('/login');

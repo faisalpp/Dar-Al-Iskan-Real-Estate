@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Client;
+use App\Models\Listing;
+use Illuminate\Http\Request;
 
 class AdminViews extends Controller
 {
@@ -8,28 +11,80 @@ class AdminViews extends Controller
       return view('adminDashboard.index');
   }
 
-  public function ManageListings(){
-      // $master_plan = MasterPlan::first();
-      return view('adminDashboard.ManageListing');
+  public function ManageListings(Request $request){
+
+    $search = $request['search'] ?? '';
+    $filter = $request['filter'];
+
+    
+    if($search !== ''){
+
+      if($request['search'] === 'title'){
+       try{
+        $listings = Listing::where($filter, 'LIKE', '%' . $search . '%')->paginate(20);
+       }catch(error){
+        return abort(500);
+       }
+      }else{
+       try{
+        $listings = Listing::where($filter, '=',$search)->paginate(20);
+       }catch(error){
+        return abort(500);
+       }
+      }
+    }else{   
+     try{
+      $listings = Listing::paginate(20);
+     }catch(error){
+      return abort(500);
+     }
+    }
+      return view('adminDashboard.ManageListing',compact('listings','search'));
   }
   
   public function AddListing(){
-      // $master_plan = MasterPlan::first();
       return view('adminDashboard.AddListing');
   }
+
+  public function ViewListing(Request $request){
+    try{
+      $listing = Listing::where('id', $request['id'])->first();
+      return view('adminDashboard.ViewListingDetail',compact('listing'));
+    }catch(error){
+      return abrot(500);
+    }
+  }
   
-  public function ManageClients(){
-      // $master_plan = MasterPlan::first();
-      return view('adminDashboard.ManageClient');
+  public function ManageClients(Request $request){
+   
+    $search = $request['search'] ?? '';
+   
+    if($search !== ''){
+     try{
+      $clients = Client::where('email', 'LIKE', '%' . $search . '%')
+      ->orWhere('first_name', 'LIKE', '%' . $search . '%')
+      ->orWhere('middle_name', 'LIKE', '%' . $search . '%')
+      ->orWhere('last_name', 'LIKE', '%' . $search . '%')
+      ->orWhere('phone', 'LIKE', '%' . $search . '%')
+      ->orWhere('address', 'LIKE', '%' . $search . '%')->paginate(20);
+     }catch(error){
+      return abort(500);
+     }
+    }else{   
+     try{
+      $clients = Client::paginate(20);
+     }catch(error){
+      return abort(500);
+     }
+    }
+    return view('adminDashboard.ManageClient',compact('clients','search'));
   }
   
   public function AddClient(){
-      // $master_plan = MasterPlan::first();
       return view('adminDashboard.AddClient');
   }
 
   public function ManageAppointments(){
-      // $master_plan = MasterPlan::first();
       $events = [
         [
             'title' => 'Fake Event 1',
@@ -46,7 +101,6 @@ class AdminViews extends Controller
   }
   
   public function CreateAppointment(){
-      // $master_plan = MasterPlan::first();
       return view('adminDashboard.CreateAppointment');
   }
   

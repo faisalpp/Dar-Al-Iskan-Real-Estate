@@ -1,18 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserDashboard;
 use App\Http\Controllers\AdminViews;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ListingController;
 use App\Http\Controllers\UserAuth;
 use App\Http\Controllers\ForgotPassword;
-use Carbon\Carbon;
-use App\Models\Transaction;
-use App\Models\Account;
-use App\Models\User;
-use App\Models\Plan;
-use App\Models\Gateway;
-use App\Models\MasterPlan;
-use Illuminate\Support\Facades\Hash;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,11 +24,11 @@ Route::view('/about','about');
 Route::view('/contact','contact');
 Route::view('/privacy','policy');
 Route::view('/terms','terms');
-Route::get('/register',[UserAuth::class,'RegisterView']);
+Route::get('/register',[AdminController::class,'RegisterView']);
 // Auth APi's
-Route::post('/login',[UserAuth::class,'Login']);
-Route::post('/register',[UserAuth::class,'Register']);
-Route::get('/logout',[UserAuth::class,'Logout']);
+Route::post('/login',[AdminController::class,'Login']);
+Route::post('/register',[AdminController::class,'Register']);
+Route::get('/logout',[AdminController::class,'Logout']);
 
 
 // Forgot Password Views Routes
@@ -48,15 +42,18 @@ Route::post('/reset-password',[ForgotPassword::class,'submitResetPassword']);
 
 
 // Admin Dashboard Routes
-Route::group(['middleware'=>['isAdmin']],function(){
  Route::get('/admin/dashboard',[AdminViews::class,'Dashboard']);
  
  Route::get('/admin/manage-listings',[AdminViews::class,'ManageListings']);
+ Route::get('/admin/view-listing/{id}',[AdminViews::class,'ViewListing']);
  Route::get('/admin/add-listing',[AdminViews::class,'AddListing']);
+ Route::post('/admin/create-listing',[ListingController::class,'CreateListing']);
+ Route::post('/admin/update-listing',[ListingController::class,'UpdateListing']);
  
  Route::get('/admin/manage-clients',[AdminViews::class,'ManageClients']);
  Route::get('/admin/add-client',[AdminViews::class,'AddClient']);
-
+ Route::post('/admin/create-client',[ClientController::class,'CreateClient']);
+ 
  Route::get('/admin/manage-appointments',[AdminViews::class,'ManageAppointments']);
  Route::get('/admin/create-client',[AdminViews::class,'CreateClient']);
  
@@ -65,7 +62,6 @@ Route::group(['middleware'=>['isAdmin']],function(){
 
 // api's
 // Route::post('/admin/change-password',[AdminProfileController::class,'ChangePassword']);
-});
 
 
 

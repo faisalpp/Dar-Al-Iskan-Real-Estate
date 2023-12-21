@@ -9,7 +9,7 @@
                         
                         <div class="section-header">
                             <h6 class="section-header__subtitle"></h6>
-                            <h3 class="section-header__title">Sign in to IM EasyCash</h3>
+                            <h3 class="section-header__title">Sign in to Dar Al-Iskan Real Estate</h3>
                             <p>
                                 Turn Your ideas into Reality
                             </p>

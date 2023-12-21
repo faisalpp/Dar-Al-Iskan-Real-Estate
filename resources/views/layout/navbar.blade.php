@@ -11,7 +11,7 @@
 
     <meta name="keywords" content="elitclick,money investment,ElitClick">
     <meta name="author" content="ElitClick">
-    <title>RBMS</title>
+    <title>Dar Al-Iskan Real Estate</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     @vite(['resources/css/bootstrap.min.css', 'resources/css/animate.css', 'resources/css/lightbox.min.css', 'resources/css/odometer.css', 'resources/css/owl.min.css', 'resources/css/main.css', 'resources/css/custom.css', 'resources/css/toastr.min.css'])

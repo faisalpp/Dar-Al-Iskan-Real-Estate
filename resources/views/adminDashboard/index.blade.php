@@ -14,55 +14,11 @@
       <li>Dashboard</li>
   </ul>
 </div>
+
 <div class="dashboard--content-item">
-      <div class="dashboard--wrapper">
-        <div class="dashboard--width">
-          <div class="dashboard-card h-100">
+  <div class="dashboard--wrapper">
 
-              <div class="dashboard-card__header">
-                  <div class="dashboard-card__header__icon">
-					<img src="{{url('/c1.png')}}" alt="wallet">
-                  </div>
-                  <div class="dashboard-card__header__cont">
-                      <h6 class="name">Total Listings</h6>
-                      <div class="balance" style="font-weight:bold">1000</div>
-                  </div>
-              </div>
-          </div>
-       </div>
-
-        <div class="dashboard--width">
-            <div class="dashboard-card h-100">
-
-                <div class="dashboard-card__header">
-                    <div class="dashboard-card__header__icon">
-                        <img src="{{url('/c2.png')}}" alt="wallet">
-                    </div>
-                    <div class="dashboard-card__header__cont">
-                        <h6 class="name">Total&nbsp;Clients</h6>
-                        <div class="balance" style="font-weight:bold">99</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        
-        <div class="dashboard--width">
-            <div class="dashboard-card h-100">
-
-                <div class="dashboard-card__header">
-                    <div class="dashboard-card__header__icon">
-                        <img src="{{url('/c3.png')}}" alt="wallet">
-                    </div>
-                    <div class="dashboard-card__header__cont">
-                        <h6 class="name">Vip Clients</h6>
-                        <div class="balance" style="font-weight:bold">66</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="dashboard--width">
+          <div class="dashboard--width">
             <div class="dashboard-card h-100">
 
                 <div class="dashboard-card__header">
@@ -76,6 +32,7 @@
                 </div>
             </div>
         </div>
+
   </div> 
 </div> 
 
@@ -105,8 +62,8 @@
 							</div>
 						</td>
 
-						<td data-label="Type" style="align-text:center" class="d-flex justify-content-center">
-							<div style="font-weight:bold;background-color:#800080;border-radius:100%;color:white;width:fit-content;padding:3px 8px 5px 8px" ><i class="fas fa-crown" style="font-size:12px" ></i></div>
+						<td data-label="Type" style="align-text:center" class="d-flex justify-content-center">	
+						<div style="font-weight:bold;background-color:#800080;border-radius:100%;color:white;width:fit-content;padding:3px 8px 5px 8px" ><i class="fas fa-crown" style="font-size:12px" ></i></div>
 						</td>
 
 						<td data-label="Txnid">
@@ -128,7 +85,7 @@
 
 						<td data-label="Amount">
 							<div>
-							<p class="text-success" style="font-weight:bold">Rs.3,000</p>	
+							<p class="text-success" style="font-weight:bold">300 OMR</p>	
 						</div>
 						</td>
 
@@ -157,7 +114,7 @@
 
 						<td data-label="Amount">
 							<div>
-							<p class="text-danger" style="font-weight:bold">Rs.3,000</p>	
+							<p class="text-danger" style="font-weight:bold">300 OMR</p>	
 						</div>
 						</td>
 

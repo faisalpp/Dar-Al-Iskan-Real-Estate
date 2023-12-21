@@ -1,17 +1,17 @@
 @extends('adminDashboard.layout.main')
 @section('main')
 @push('title')
-<title>Add Listing</title>
+<title>Listing Details</title>
 @endpush
 <div class="dashborad--content">
 				
 <div class="breadcrumb-area">
-  <h3 class="title">Add Listing</h3>
+  <h3 class="title">Listing Details</h3>
   <ul class="breadcrumb">
       <li>
         <a href="{{url('/user/dashboard')}}">Dashboard</a>
       </li>
-      <li>Add Listing</li>
+      <li>Listing Details</li>
   </ul>
 </div>
 @if(session()->has('success'))
@@ -23,21 +23,22 @@
     <div id="request-form">
     @csrf
     <div class="profile--card">
-          <form class="row gy-4" action="{{url('/admin/create-listing')}}" method="post">
+          <form class="row gy-4" action="{{url('/admin/update-listing')}}" method="post">
             @csrf
               <div class="col-sm-6 col-xxl-4">
                 <label for="name" class="form-label"  >Listing Title</label>
                 @error('title')
                   <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
                  @enderror
-                <input type="text" id="name" name="title" autocomplete="title" class="form-control" value="">
+                <input type="hidden" id="name" name="id" autocomplete="title" class="form-control" value="{{$listing->id}}">
+                <input type="text" id="name" name="title" autocomplete="title" class="form-control" value="{{$listing->title}}">
               </div>
               <div class="col-sm-6 col-xxl-4">
                <label for="email" class="form-label">Size</label>
                @error('size')
                   <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
                  @enderror
-               <input type="text" name="size" id="email" autocomplete="size" class="form-control" value="">
+               <input type="text" name="size" id="email" autocomplete="size" class="form-control" value="{{$listing->size}}">
               </div>
 
               <div class="col-sm-6 col-lg-3 col-xxl-4">
@@ -46,7 +47,7 @@
                   <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
                  @enderror
                   <div class="input-group d-flex align-items-center">
-                      <input type="text" autocomplete="phone" name="location" id="phone" class="form-control" value="">
+                      <input type="text" autocomplete="phone" name="location" id="phone" class="form-control" value="{{$listing->location}}">
                           <button type="button" style="height:50px;width:33%;font-size:12px;outline:none;border-radius:2px" data-bs-toggle="modal" data-bs-target="#invest-modal" class="btn btn-primary">Select</button>                        
                      <!-- Invest Modal -->
                      <div class="modal fade" id="invest-modal">
@@ -80,7 +81,7 @@
                   <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
                  @enderror
                <div class="input-group">
-                <input type="text" autocomplete="phone" name="no_bedrooms" id="phone" class="form-control" value="0">
+                <input type="text" autocomplete="phone" name="no_bedrooms" id="phone" class="form-control" value="{{$listing->no_bedrooms}}">
                </div>
               </div>
 
@@ -90,7 +91,7 @@
                   <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
                  @enderror
                <div class="input-group">
-                <input type="text" autocomplete="phone" name="no_toilets" id="phone" class="form-control" value="0">
+                <input type="text" autocomplete="phone" name="no_toilets" id="phone" class="form-control" value="{{$listing->no_toilets}}">
                </div>
               </div>
 
@@ -100,7 +101,7 @@
                   <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
                  @enderror
                <div class="input-group">
-                <input type="text" autocomplete="phone" name="no_majlis" id="phone" class="form-control" value="0">
+                <input type="text" autocomplete="phone" name="no_majlis" id="phone" class="form-control" value="{{$listing->no_majlis}}">
                </div>
               </div>
 
@@ -110,7 +111,7 @@
                   <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
                  @enderror
                <div class="input-group">
-                <input type="text" autocomplete="phone" name="no_floors" id="phone" class="form-control" value="0">
+                <input type="text" autocomplete="phone" name="no_floors" id="phone" class="form-control" value="{{$listing->no_floors}}">
                </div>
               </div>
 
@@ -120,7 +121,7 @@
                   <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
                  @enderror
                <div class="input-group">
-                <input type="text" autocomplete="phone" name="no_kitchens" id="phone" class="form-control" value="0">
+                <input type="text" autocomplete="phone" name="no_kitchens" id="phone" class="form-control" value="{{$listing->no_kitchens}}">
                </div>
               </div>
 
@@ -138,7 +139,7 @@
 
               <div class="col-sm-12">
                   <div class="text-end">
-                      <button type="submit" class="cmn--btn">Create</button>
+                      <button type="submit" class="cmn--btn">Update</button>
                   </div>
               </div>
             </form>

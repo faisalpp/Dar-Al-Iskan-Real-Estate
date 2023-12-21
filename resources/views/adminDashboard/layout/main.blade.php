@@ -12,8 +12,7 @@
     <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
-    
-           <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Include toastr CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
@@ -24,18 +23,9 @@
 </head>
 
 <body>
-    <!-- Overlayer -->
-    <span class="toTopBtn">
-        <i class="fa fa-angle-up"></i>
-    </span>
-    <div class="overlayer"></div>
-    <!-- <div class="loader"></div> -->
-    <!-- Overlayer -->
-
     <!-- User Dashboard -->
     <main class="dashboard-section">
         <aside class="dashboard-sidebar">
-            <!-- <div class="bg-primaryColor">&nbsp;</div> -->
             <div class="dashboard-sidebar-inner bg-primaryColor">
                 <div class="user-sidebar-header d-flex justify-content-center align-items-center">
                  <img src="/logo.png" style="width:40%;border-radius:5px" />    
@@ -91,10 +81,9 @@
             </div>
         </aside>
         <article class="main--content">
-            <nav class="navbar navbar-expand-lg py-2 bg-primaryColor">
+            <nav class="navbar navbar-expand-lg bg-primaryColor py-2 w-100">
                 <div class="container-fluid">
                     <img src="/logo.png" class="d-lg-none" style="width:16%;border-radius:5px" />
-                    <!-- <a class="navbar-brand" href="#"><img src="{{ url('imearn-logo.png') }}" style="width: 120px;margin-left:10px;" /></a> -->
                     <button class="navbar-toggler shadow-none" data-bs-toggle="collapse" data-bs-target="#navbarGeneral" type="button" aria-controls="navbarGeneral" aria-expanded="false" aria-label="Toggle navigation">
                         <svg class="icon icon-tabler icon-tabler-menu-2" xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -114,7 +103,7 @@
                     </style>
                     <div class="collapse navbar-collapse" id="navbarGeneral">
 
-                        <ul class="d-flex d-lg-none nav navbar-nav mx-auto mb-2 mb-lg-0" style="border-top:1px solid white">
+                        <ul class="d-flex d-lg-none nav navbar-nav mb-2 mb-lg-0" style="border-top:1px solid white">
 
                             <!--Mobile Nav Links-->
                             <li>
@@ -244,21 +233,6 @@
     <!-- User Dashboard -->
 
     @vite(['resources/js/jquery-3.6.0.min.js', 'resources/js/bootstrap.min.js', 'resources/js/viewport.jquery.js', 'resources/js/odometer.min.js', 'resources/js/lightbox.min.js', 'resources/js/owl.min.js', 'resources/js/notify.js', 'resources/js/main.js', 'resources/js/toastr.min.js', 'resources/js/custom.js'])
-    <script>
-        'use strict';
-
-        function myFunction() {
-            var copyText = document.getElementById("cronjobURL");
-            copyText.select();
-            copyText.setSelectionRange(0, 99999);
-            document.execCommand("copy");
-            $.notify("Referral url copied", "info");
-        }
-    </script>
-
-    <script>
-        'use strict';
-    </script>
 </body>
 
 </html>

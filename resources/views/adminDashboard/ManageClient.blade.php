@@ -53,10 +53,10 @@
 </div>
  
   <!-- Search Bar -->
-  <div class="d-flex align-items-center justify-content-end flex-row w-100" >
-   <input type="text" style="height:35px;width:50%;outline:none" />
-   <a class="btn px-3 py-2" style="background-color:#D5924D;margin-left:10px;border-radius:5px;height:40px" href="{{ url('/admin/dashboard') }}"><i class="fas fa-search" style="color:white;font-size:14px"></i></a>
- </div>
+  <form action=""  class="d-flex align-items-center justify-content-end flex-row w-100" >
+  <input type="search" name="search" style="height:35px;width:40%;outline:none" value="{{$search}}" />
+   <button class="btn px-3 py-2" style="border:none;background-color:#D5924D;margin-left:10px;border-radius:5px;height:40px" href="{{ url('/admin/dashboard') }}"><i class="fas fa-search" style="color:white;font-size:14px"></i></button>
+</form>
   
 
 </div>
@@ -66,22 +66,54 @@
 				  <tr>
 					<th>Client Name</th>
 					<th>Type</th>
-					<th>Location</th>
-					<th>Amount</th>
-					<th>Status</th>
+					<th>Email</th>
+					<th>Phone</th>
 					<th>Date</th>
+					<th>Listings</th>
 				  </tr>
 			  </thead>
 			  <tbody>
-
+       @foreach($clients as $client)
 			  <tr>
 						<td data-label="No">
 							<div>
-							<span style="font-weight:bold" >M.Faisal</span>
+							<span >{{$client->first_name}} {{$client->middle_name}} {{$client->last_name}}</span>
+							</div>
+						</td>
+						<td data-label="No">
+							<div class="d-flex justify-content-center" >
+              @if($client->is_vip === 'yes')
+               <div title="VIP" style="font-weight:bold;background-color:#800080;border-radius:100%;color:white;width:fit-content;padding:3px 8px 5px 8px" ><i class="fas fa-crown" style="font-size:12px" ></i></div>
+              @else
+              <div title="Normal" style="font-weight:bold;background-color:orange;border-radius:100%;color:white;width:fit-content;padding:3px 9px 5px 9px" ><i class="fas fa-user" style="font-size:14px" ></i></div>	
+              @endif
+							</div>
+						</td>
+            <td data-label="No">
+							<div>
+							<span >{{$client->email}}</span>
+							</div>
+						</td>
+            <td data-label="No">
+							<div>
+							<span >{{$client->phone}}</span>
+							</div>
+						</td>
+            <td data-label="No">
+							<div>
+							<span >{{date_format($client->created_at,"d M Y")}}</span>
+							</div>
+						</td>
+            <td data-label="No">
+							<div>
+							<!-- <button title="View Client" style="border:none;font-weight:bold;background-color:#28628B;border-radius:100%;color:white;width:fit-content;padding:3px 9px 5px 9px" ><i class="fas fa-eye" style="font-size:14px" ></i></button>	 -->
+							<button title="View Listing" style="border:none;font-weight:bold;background-color:red;border-radius:100%;color:white;width:fit-content;padding:3px 9px 5px 9px" ><i class="fas fa-map" style="font-size:14px" ></i></button>	
 							</div>
 						</td>
         </tr>
+        @endforeach
 </table>
+{{ $clients->links() }}
 </div>
 
 @endsection
