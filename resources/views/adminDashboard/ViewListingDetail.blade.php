@@ -25,7 +25,14 @@
     <div class="profile--card">
           <form class="row gy-4" action="{{url('/admin/update-listing')}}" method="post">
             @csrf
-              <div class="col-sm-6 col-xxl-4">
+              <div class="col-sm-6 col-lg-4 col-xxl-4">
+                <label for="name" class="form-label"  >Kroki No</label>
+                @error('serial_no')
+                  <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
+                 @enderror
+                <input type="text" id="name" name="serial_no" autocomplete="title" class="form-control" value="{{$listing->serial_no}}">
+              </div>
+              <div class="col-sm-6 col-lg-4 col-xxl-4">
                 <label for="name" class="form-label"  >Listing Title</label>
                 @error('title')
                   <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
@@ -33,12 +40,30 @@
                 <input type="hidden" id="name" name="id" autocomplete="title" class="form-control" value="{{$listing->id}}">
                 <input type="text" id="name" name="title" autocomplete="title" class="form-control" value="{{$listing->title}}">
               </div>
-              <div class="col-sm-6 col-xxl-4">
+              <div class="col-sm-6 col-lg-4 col-xxl-4">
                <label for="email" class="form-label">Size</label>
                @error('size')
                   <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
                  @enderror
                <input type="text" name="size" id="email" autocomplete="size" class="form-control" value="{{$listing->size}}">
+              </div>
+
+              <div class="col-sm-6 col-lg-3 col-xxl-4">
+                  <label for="phone" class="form-label">Status</label>
+                  @error('status')
+                  <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
+                 @enderror
+                  <div class="input-group">
+                  <select name="status" class="form-control">
+                    @if($listing->status === 'On Sell')
+                    <option value="On Sell" >On Sell</option>
+                    <option value="Sold" >Sold</option>
+                    @else
+                    <option value="Sold" >Sold</option>
+                    <option value="On Sell" >On Sell</option>
+                    @endif
+                  </select>    
+                  </div>
               </div>
 
               <div class="col-sm-6 col-lg-3 col-xxl-4">
@@ -68,11 +93,29 @@
                  @enderror
                   <div class="input-group">
                   <select name="type" class="form-control">
-                    <option value="no" >Land</option>
-                    <option value="yes" >Villa</option>
-                    <option value="apartment" >Apartment</option>
+                    @if($listing->type === 'Land')
+                    <option value="Land" >Land</option>
+                    <option value="Villa" >Villa</option>
+                    <option value="Apartment" >Apartment</option>
+                    @elseif($listing->type === 'Villa')
+                    <option value="Villa" >Villa</option>
+                    <option value="Land" >Land</option>
+                    <option value="Apartment" >Apartment</option>
+                    @else
+                    <option value="Apartment" >Apartment</option>
+                    <option value="Villa" >Villa</option>
+                    <option value="Land" >Land</option>
+                    @endif
                   </select>    
                   </div>
+              </div>
+
+              <div class="col-sm-6 col-lg-3 col-xxl-4">
+               <label for="email" class="form-label">Amount</label>
+               @error('amount')
+                  <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
+                 @enderror
+               <input type="text" name="amount" id="email" autocomplete="size" class="form-control" value="{{$listing->amount}}">
               </div>
 
               <div class="col-sm-6 col-lg-3 col-xxl-4">

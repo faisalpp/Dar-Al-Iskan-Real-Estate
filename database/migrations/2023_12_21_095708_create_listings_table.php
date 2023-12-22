@@ -15,10 +15,13 @@ return new class extends Migration
     {
         Schema::create('listings', function (Blueprint $table) {
             $table->id();
+            $table->string('serial_no');
             $table->string('title');
             $table->string('size');
             $table->string('location')->nullable();
             $table->string('type');
+            $table->string('amount');
+            $table->string('status');
             $table->string('no_bedrooms')->default('0');
             $table->string('no_toilets')->default('0');
             $table->string('no_majlis')->default('0');

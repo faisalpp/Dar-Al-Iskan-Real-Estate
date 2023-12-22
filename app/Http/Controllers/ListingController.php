@@ -10,6 +10,9 @@ class ListingController extends Controller
     public function CreateListing(Request $request){
       
      $request->validate([
+        'serial_no'=>'required',
+        'amount'=>'required',
+        'status'=>'required',
         'title'=>'required',
         'size'=>'required',
         'type'=>'required',
@@ -22,10 +25,13 @@ class ListingController extends Controller
 
      try{
        $listing = new Listing();
+       $listing->serial_no = $request['serial_no'];
        $listing->title = $request['title'];
        $listing->size = $request['size'];
        $listing->location = $request['location'];
        $listing->type = $request['type'];
+       $listing->amount = $request['amount'];
+       $listing->status = $request['status'];
        $listing->no_bedrooms = $request['no_bedrooms'];
        $listing->no_toilets = $request['no_toilets'];
        $listing->no_majlis = $request['no_majlis'];
@@ -45,8 +51,11 @@ class ListingController extends Controller
       
      $request->validate([
         'id'=>'required',
+        'serial_no'=>'required',
         'title'=>'required',
         'size'=>'required',
+        'amount'=>'required',
+        'status'=>'required',
         'type'=>'required',
         'no_bedrooms'=>'required',
         'no_toilets'=>'required',
@@ -58,10 +67,13 @@ class ListingController extends Controller
      try{
 
       Listing::where('id',$request['id'])->update([
+         'serial_no' => $request['serial_no'],
          'title' => $request['title'],
          'size' => $request['size'],
          'location' => $request['location'],
          'type' => $request['type'],
+         'amount' => $request['amount'],
+         'status' => $request['status'],
          'no_bedrooms' => $request['no_bedrooms'],
          'no_toilets' => $request['no_toilets'],
          'no_majlis' => $request['no_majlis'],
@@ -76,4 +88,21 @@ class ListingController extends Controller
      }
 
     }
+
+
+    public function DeleteListing(Request $request){
+      $request->validate([
+         'id'=>'required'
+      ]);
+
+      try{
+       Listing::where('id',$request['id'])->delete();
+       session()->flash('success','Listing Successfully Deleted!');
+   return redirect('/admin/manage-listings');
+      }catch(error){
+         return abort(500);
+      }
+
+    }
+
 }

@@ -58,23 +58,27 @@ class AdminViews extends Controller
   public function ManageClients(Request $request){
    
     $search = $request['search'] ?? '';
-   
-    if($search !== ''){
-     try{
-      $clients = Client::where('email', 'LIKE', '%' . $search . '%')
-      ->orWhere('first_name', 'LIKE', '%' . $search . '%')
-      ->orWhere('middle_name', 'LIKE', '%' . $search . '%')
-      ->orWhere('last_name', 'LIKE', '%' . $search . '%')
-      ->orWhere('phone', 'LIKE', '%' . $search . '%')
-      ->orWhere('address', 'LIKE', '%' . $search . '%')->paginate(20);
-     }catch(error){
-      return abort(500);
-     }
-    }else{   
-     try{
-      $clients = Client::paginate(20);
-     }catch(error){
-      return abort(500);
+    $filter = $request['filter'];
+
+    if($filter === 'yes' || $filter === 'no'){
+      try{
+        $clients = Client::where('is_vip',$filter)->paginate(20);
+       }catch(error){
+         return abort(500);
+       }
+    }else{
+     if($search !== ''){
+       try{
+         $clients = Client::where($filter,$search)->paginate(20);
+        }catch(error){
+          return abort(500);
+        }
+     }else{
+      try{
+       $clients = Client::paginate(20);
+      }catch(error){
+       return abort(500);
+      }
      }
     }
     return view('adminDashboard.ManageClient',compact('clients','search'));
@@ -82,6 +86,12 @@ class AdminViews extends Controller
   
   public function AddClient(){
       return view('adminDashboard.AddClient');
+  }
+  
+  public function ViewClient(Request $request){
+    $client = Client::where('id',$request['id'])->first();
+    $listings = Listing::where('id',10)->get();
+    return view('adminDashboard.ViewClientDetail',compact('client','listings'));
   }
 
   public function ManageAppointments(){

@@ -18,19 +18,49 @@
 <div class="dashboard--content-item">
   <div class="dashboard--wrapper">
 
-          <div class="dashboard--width">
-            <div class="dashboard-card h-100">
+        <div class="dashboard--width">
+         <div class="dashboard-card h-100">
+          <div class="dashboard-card__header">
+           <div class="dashboard-card__header__icon">
+            <!-- <img src="{{url('/c5.png')}}" alt="wallet"> -->
+			<i class="fas fa-crown" ></i>
+           </div>
+           <div class="dashboard-card__header__cont">
+            <h6 class="name">Vip Clients</h6>
+            <div class="balance" style="font-weight:bold">65</div>
+           </div>
+          </div>
+         </div>
+        </div>
 
-                <div class="dashboard-card__header">
-                    <div class="dashboard-card__header__icon">
-                        <img src="{{url('/c5.png')}}" alt="wallet">
-                    </div>
-                    <div class="dashboard-card__header__cont">
-                        <h6 class="name">General Clients</h6>
-                        <div class="balance" style="font-weight:bold">65</div>
-                    </div>
-                </div>
-            </div>
+		<div class="dashboard--width">
+         <div class="dashboard-card h-100">
+          <div class="dashboard-card__header">
+           <div class="dashboard-card__header__icon">
+            <!-- <img src="{{url('/c5.png')}}" alt="wallet"> -->
+			<i class="fas fa-user" ></i>
+           </div>
+           <div class="dashboard-card__header__cont">
+            <h6 class="name">General Clients</h6>
+            <div class="balance" style="font-weight:bold">65</div>
+           </div>
+          </div>
+         </div>
+        </div>
+	
+		<div class="dashboard--width">
+         <div class="dashboard-card h-100">
+          <div class="dashboard-card__header">
+           <div class="dashboard-card__header__icon">
+            <!-- <img src="{{url('/c5.png')}}" alt="wallet"> -->
+			<i class="fas fa-map" ></i>
+           </div>
+           <div class="dashboard-card__header__cont">
+            <h6 class="name">Total Listings</h6>
+            <div class="balance" style="font-weight:bold">65</div>
+           </div>
+          </div>
+         </div>
         </div>
 
   </div> 

@@ -19,7 +19,7 @@ class isLogin
         if($request->session()->has('user')){
             return $next($request);
          }else{
-             return redirect('/login');
+             return redirect('/');
          }
     }
 }
