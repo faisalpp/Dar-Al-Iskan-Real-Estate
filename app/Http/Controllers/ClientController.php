@@ -88,7 +88,7 @@ class ClientController extends Controller
   $filter = $request['filter'];   
 
   try{
-   Client::where($filter,$search)->get();
+   $users = Client::where($filter, 'LIKE', '%' . $search . '%')->get();
    return response()->json(['users' => $users]);
   }catch(error){
     return abort(500);

@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('listings', function (Blueprint $table) {
             $table->id();
+            $table->string('user');
             $table->string('serial_no');
             $table->string('title');
             $table->string('size');

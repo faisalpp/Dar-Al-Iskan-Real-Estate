@@ -10,6 +10,7 @@ class ListingController extends Controller
     public function CreateListing(Request $request){
       
      $request->validate([
+        'user'=>'required',
         'serial_no'=>'required',
         'amount'=>'required',
         'status'=>'required',
@@ -25,6 +26,7 @@ class ListingController extends Controller
 
      try{
        $listing = new Listing();
+       $listing->user = $request['user'];
        $listing->serial_no = $request['serial_no'];
        $listing->title = $request['title'];
        $listing->size = $request['size'];
@@ -51,6 +53,7 @@ class ListingController extends Controller
       
      $request->validate([
         'id'=>'required',
+        'user'=>'required',
         'serial_no'=>'required',
         'title'=>'required',
         'size'=>'required',
@@ -67,6 +70,7 @@ class ListingController extends Controller
      try{
 
       Listing::where('id',$request['id'])->update([
+         'user' => $request['user'],
          'serial_no' => $request['serial_no'],
          'title' => $request['title'],
          'size' => $request['size'],

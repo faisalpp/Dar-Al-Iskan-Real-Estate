@@ -59,10 +59,15 @@ Route::middleware(['isLogin'])->group(function () {
  Route::get('/admin/view-client/{id}',[AdminViews::class,'ViewClient']);
  Route::post('/admin/update-client',[ClientController::class,'UpdateClient']);
  Route::post('/admin/delete-client',[ClientController::class,'DeleteClient']);
+ Route::post('/admin/get-clients',[ClientController::class,'GetClients']);
  
+// Media Routes
+Route::post('/admin/upload-media',[MediaController::class,'UploadMedia']);
+
+
 //  Appointment Routes
  Route::get('/admin/manage-appointments',[AdminViews::class,'ManageAppointments']);
- Route::get('/admin/create-client',[AdminViews::class,'CreateClient']);
+//  Route::get('/admin/create-client',[AdminViews::class,'CreateClient']);
  
  Route::get('/admin/change-password',[AdminViews::class,'ChangePassword']);
 });
