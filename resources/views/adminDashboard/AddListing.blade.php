@@ -5,6 +5,9 @@
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 @endpush
 <script>
+  let globalImagePaths = [];
+</script>
+<script>
  $(document).ready(function () {
   // Intercept the form submission
   $('#listing-create-form').submit(function () {
@@ -80,14 +83,15 @@
 <script>
  $(document).ready(function () {
    $('#file-picker-select').on('change',function () {
-   
-    const file = $('#file-picker-select')[0]
-     if(file){
+    const fileInput = document.getElementById('file-picker-select');
+    const file = fileInput.files[0];
+    if(file){
+      if(file.type.startsWith('image') || file.type.startsWith('video')){
+      $('#file-loader').css('display','block');
        const data = new FormData()
        data.append('file',file);
       //  data.append('_csrf',file);
        data.append('csrf_token', $('input[name=_token]').val());
-            
        $.ajax({
           url: "{{url('/admin/upload-media')}}", // Replace with your server-side endpoint
           type: 'POST',
@@ -97,17 +101,38 @@
           headers: {
            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           },
-          success: function (response) {
+          success: function (res) {
+            const path = {'type':file.type,path:res.path}
+            globalImagePaths.push(path)
+
+            $('#media-placeholder').html('');
+            globalImagePaths.forEach(function (media) {
+             if(media.type.startsWith === 'video'){
+               const newUserElement = $(
+               `<video src='${media.path}' controls >`+'</video>'
+              );
+            }else{
+               const newUserElement = $(
+               `<image src='${media.path}' />`
+              );
+             }
+             $('#client-list').append(newUserElement);
+            });
+            $('#file-loader').css('display','none');
+            toastr.success('File Uploaded Successfully!');
               // Handle the success response
-              console.log(response);
+              console.log(res);
           },
           error: function (error) {
-              // Handle the error response
-              console.error(error);
+           // Handle the error response
+           $('#file-loader').css('display','none');
+           toastr.error('File Upload Failed!');
+           console.error(error);
           }
          })
-    
-    
+       }else{
+        toastr.error('Invalid File Type!');
+       }
       }
     })
  })

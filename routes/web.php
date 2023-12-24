@@ -5,6 +5,8 @@ use App\Http\Controllers\AdminViews;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\CalanderController;
+use App\Http\Controllers\MediaController;
 use App\Http\Controllers\UserAuth;
 use App\Http\Controllers\ForgotPassword;
 
@@ -67,11 +69,12 @@ Route::post('/admin/upload-media',[MediaController::class,'UploadMedia']);
 
 //  Appointment Routes
  Route::get('/admin/manage-appointments',[AdminViews::class,'ManageAppointments']);
-//  Route::get('/admin/create-client',[AdminViews::class,'CreateClient']);
+ //  Route::get('/admin/create-client',[AdminViews::class,'CreateClient']);
  
  Route::get('/admin/change-password',[AdminViews::class,'ChangePassword']);
 });
 
+Route::get('/download-calender',[CalanderController::class,'GenerateEvents']);
 // api's
 // Route::post('/admin/change-password',[AdminProfileController::class,'ChangePassword']);
 

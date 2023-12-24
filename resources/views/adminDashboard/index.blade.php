@@ -68,6 +68,7 @@
 
 <div>
  <h4 style="font-weight:bold">Latest Listings</h4>
+ <a href="{{url('/admin/download-calander')}}" >Downlaod</a>
 </div>
 
 <div class="dashboard--content-item">
