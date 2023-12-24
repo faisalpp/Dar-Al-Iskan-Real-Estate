@@ -46,17 +46,8 @@
                                     @enderror
                                 <input type="password" name="password" id="password" class="form-control">
                             </div>
-                            <div class="col-12 mt-2">
-                                <div class="d-flex flex-wrap justify-content-between">
-                                    <a href="{{url('/forgot-password')}}" class="text--base">Forget Password</a>
-                                </div>
-                            </div>
                             <div class="col-sm-12">
                                 <button type="submit" class="cmn--btn">Sign In <div class="spinner-borde"></div></button>
-                                {{-- <button type="submit" >Login</button> --}}
-                            </div>
-                            <div class="col-sm-12">
-                                Not Registered Yet ? <a href="{{url('/register')}}" class="text--base">Create an Account</a>
                             </div>
                         </form>
                     </div>
