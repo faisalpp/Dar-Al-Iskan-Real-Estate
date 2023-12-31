@@ -10,7 +10,7 @@ class ListingController extends Controller
     public function CreateListing(Request $request){
       
      $request->validate([
-        'user'=>'required',
+        'client'=>'required',
         'serial_no'=>'required',
         'amount'=>'required',
         'status'=>'required',
@@ -26,11 +26,12 @@ class ListingController extends Controller
 
      try{
        $listing = new Listing();
-       $listing->user = $request['user'];
+       $listing->client = $request['client'];
        $listing->serial_no = $request['serial_no'];
        $listing->title = $request['title'];
        $listing->size = $request['size'];
        $listing->location = $request['location'];
+       $listing->lat_lng = $request['lat_lng'];
        $listing->type = $request['type'];
        $listing->amount = $request['amount'];
        $listing->status = $request['status'];
@@ -42,7 +43,7 @@ class ListingController extends Controller
        $listing->media = $request['media'];
        $listing->save();
        session()->flash('success','Listing Successfully Created!');
-       return redirect('/admin/manage-listings');
+       return response()->json(['message'=>'Ok']) ;
      }catch(error){
         return abort(500);
      }
@@ -53,7 +54,7 @@ class ListingController extends Controller
       
      $request->validate([
         'id'=>'required',
-        'user'=>'required',
+        'client'=>'required',
         'serial_no'=>'required',
         'title'=>'required',
         'size'=>'required',
@@ -70,11 +71,12 @@ class ListingController extends Controller
      try{
 
       Listing::where('id',$request['id'])->update([
-         'user' => $request['user'],
+         'client' => $request['client'],
          'serial_no' => $request['serial_no'],
          'title' => $request['title'],
          'size' => $request['size'],
          'location' => $request['location'],
+         'lat_lng' => $request['lat_lng'],
          'type' => $request['type'],
          'amount' => $request['amount'],
          'status' => $request['status'],

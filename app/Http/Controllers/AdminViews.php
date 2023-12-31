@@ -2,13 +2,43 @@
 
 namespace App\Http\Controllers;
 use App\Models\Client;
+use App\Charts\Statistics;
+use App\Charts\PieStatistics;
 use App\Models\Listing;
+use App\Models\Events;
 use Illuminate\Http\Request;
 
 class AdminViews extends Controller
 {
   public function Dashboard(){
-      return view('adminDashboard.index');
+
+    $today = Listing::whereMonth('created_at',today())->count();
+    $yesterday = Listing::whereDate('created_at', today()->subDays(1))->count();
+  
+    $stat = new Statistics;
+    $stat->labels(['Today','Yesterday']);
+    $stat->dataset('Day Chart','line',[$today,$yesterday])->backgroundColor('#B2E2FF')->color('#7FCEFF');
+    
+    $sold = Listing::where('status','Sold')->count();
+    $sell = Listing::where('status','On Sell')->count();
+    
+    $stat2 = new PieStatistics;
+    $stat2->labels(['Sold','On Sell']);
+    $stat2->dataset('Sell Analytics','pie',[$sold,$sell])->backgroundColor(collect(['#7d5fff','#32ff7e']))->color('#7158e2');
+
+
+    try{
+      // $total_clients = Client::count();
+      $total_vip_clients = Client::where('is_vip','yes')->count();
+      $total_org_clients = Client::where('is_vip','no')->count();
+      $total_onsell_listings = Listing::where('status','On Sell')->count();
+      $total_sold_listings = Listing::where('status','Sold')->count();
+      $latest_listings = Listing::limit(4)->get();
+      $latest_clients = Client::limit(4)->get();
+      return view('adminDashboard.index',compact('stat2','stat','total_sold_listings','total_onsell_listings','latest_listings','latest_clients','total_vip_clients','total_org_clients'));
+    }catch(error){
+      return abort(500);
+    }
   }
 
   public function ManageListings(Request $request){
@@ -49,7 +79,12 @@ class AdminViews extends Controller
   public function ViewListing(Request $request){
     try{
       $listing = Listing::where('id', $request['id'])->first();
-      return view('adminDashboard.ViewListingDetail',compact('listing'));
+      $full_name = 'Guest';
+      if($listing->client !== 'Guest'){
+        $client = Client::where('id', $listing->client)->first();
+        $full_name = $client->first_name . ' ' . $client->middle_name . ' ' . $client->last_name;
+      }
+      return view('adminDashboard.ViewListingDetail',compact('listing','full_name'));
     }catch(error){
       return abrot(500);
     }
@@ -95,19 +130,13 @@ class AdminViews extends Controller
   }
 
   public function ManageAppointments(){
-      $events = [
-        [
-            'title' => 'Fake Event 1',
-            'start' => '2023-12-01T10:00:00',
-            'end' => '2023-12-01T12:00:00',
-        ],
-        [
-            'title' => 'Fake Event 2',
-            'start' => '2023-12-15T14:00:00',
-            'end' => '2023-12-15T16:00:00',
-        ],
-      ];
+   
+    try{
+      $events = Events::get();
       return view('adminDashboard.ManageAppointment',compact('events'));
+    }catch(error){
+      return abort(500);
+    }
   }
   
   public function CreateAppointment(){

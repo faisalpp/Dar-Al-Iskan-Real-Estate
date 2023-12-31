@@ -1,7 +1,7 @@
 @extends('adminDashboard.layout.main')
 @section('main')
 @push('title')
-<title>Client Details</title>
+<title>@lang('Client Details')</title>
 @endpush
 
 <script>
@@ -19,12 +19,12 @@
 <div class="dashborad--content">
 				
 <div class="breadcrumb-area">
-  <h3 class="title">Client Details</h3>
+  <h3 class="title">@lang('Client Details')</h3>
   <ul class="breadcrumb">
       <li>
-        <a href="{{url('/user/dashboard')}}">Dashboard</a>
+        <a href="{{url('/user/dashboard')}}">@lang('Dashboard')</a>
       </li>
-      <li>Client Details</li>
+      <li>@lang('Client Details')</li>
   </ul>
 </div>
 @if(session()->has('success'))
@@ -40,7 +40,7 @@
           <form id="client-form" class="row gy-4" action="{{url('/admin/update-client')}}" method="post">
             @csrf
               <div class="col-sm-6 col-lg-4 col-xxl-4">
-                <label for="name" class="form-label">First Name</label>
+                <label for="name" class="form-label">@lang('First Name')</label>
                  @error('first_name')
                   <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
                  @enderror
@@ -48,14 +48,14 @@
                 <input type="text" id="name" name="first_name" class="form-control" value="{{$client->first_name}}">
               </div>
               <div class="col-sm-6 col-lg-4 col-xxl-4">
-               <label for="email" class="form-label">Middle Name</label>
+               <label for="email" class="form-label">@lang('Middle Name')</label>
                @error('middle_name')
                   <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
                  @enderror
                <input type="text" id="email" name="middle_name" class="form-control" value="{{$client->middle_name}}" >
               </div>
               <div class="col-sm-6 col-lg-4 col-xxl-4">
-               <label for="email" class="form-label">last Name</label>
+               <label for="email" class="form-label">@lang('last Name')</label>
                @error('last_name')
                   <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
                  @enderror
@@ -63,7 +63,7 @@
               </div>
 
               <div class="col-sm-6 col-xxl-4">
-                  <label for="phone" class="form-label">Phone</label>
+                  <label for="phone" class="form-label">@lang('Phone')</label>
                   @error('phone')
                   <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
                  @enderror
@@ -72,7 +72,7 @@
                   </div>
               </div>
               <div class="col-sm-6 col-xxl-4">
-                  <label for="phone" class="form-label">Email</label>
+                  <label for="phone" class="form-label">@lang('Email')</label>
                   @error('email')
                   <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
                  @enderror
@@ -81,7 +81,7 @@
                   </div>
               </div>
               <div class="col-sm-6 col-xxl-4">
-                  <label for="phone" class="form-label">Address</label>
+                  <label for="phone" class="form-label">@lang('Address')</label>
                   @error('address')
                   <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
                  @enderror
@@ -91,18 +91,18 @@
               </div>
 
               <div class="col-sm-6 col-xxl-4">
-                  <label for="phone" class="form-label">Is Client VIP?</label>
+                  <label for="phone" class="form-label">@lang('Is Client VIP')?</label>
                   @error('is_vip')
                   <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
                  @enderror
                   <div class="input-group">
                   <select name="is_vip" class="form-control">
                     @if($client->is_vip === 'yes')
-                    <option value="yes" >Yes</option>
-                    <option value="no">No</option>
+                    <option value="yes" >@lang('Yes')</option>
+                    <option value="no">@lang('No')</option>
                     @else
-                    <option value="no">No</option>
-                    <option value="yes" >Yes</option>
+                    <option value="no">@lang('No')</option>
+                    <option value="yes" >@lang('Yes')</option>
                     @endif  
                 </select>    
                   </div>
@@ -110,7 +110,7 @@
 
               <div class="col-sm-12">
                   <div class="text-end">
-                    <button type="submit" class="cmn--btn"><span id="form-btn-text" class="" >Update</span> <div id="loader" class="d-none">
+                    <button type="submit" class="cmn--btn"><span id="form-btn-text" class="" >@lang('Update')</span> <div id="loader" class="d-none">
                      <div class="spinner-border" role="status">
                              <span class="sr-only">Loading...</span>
                          </div>
@@ -121,18 +121,18 @@
             </form>
 
            <div>
-           <h4>Client Listings</h4>
+           <h4>@lang('Client Listings')</h4>
 
            @if(count($listings) > 0)
 <table class="table bg--body">
 			  <thead>
 				  <tr>
-					<th>Kroki No</th>
-					<th>Title</th>
-					<th>Land Type</th>
-					<th>Land Size</th>
-					<th>Date</th>
-					<th>Actions</th>
+					<th>@lang('Kroki No')</th>
+					<th>@lang('Title')</th>
+					<th>@lang('Land Type')</th>
+					<th>@lang('Land Size')</th>
+					<th>@lang('Date')</th>
+					<th>@lang('Actions')</th>
 				  </tr>
 			  </thead>
 			  <tbody>
@@ -152,7 +152,7 @@
 </table>
 @else
  <div class="d-flex justify-content-center align-items-center w-100" style="height: calc(100vh - 400px)" >
-   <h4>Client Has No Listings!</h4>
+   <h4>@lang('Client Has No Listings')!</h4>
  </div>
 @endif
 

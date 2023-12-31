@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link type="image/x-icon" href="{{ url('/logo.png') }}" rel="icon">
     <meta property="og:image" content="{{ url('/logo.png') }}" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
     @stack('title')
     @vite(['resources/css/bootstrap.min.css', 'resources/css/animate.css', 'resources/css/lightbox.min.css', 'resources/css/odometer.css', 'resources/css/owl.min.css', 'resources/css/main.css', 'resources/css/toastr.min.css'])
     <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -36,45 +37,45 @@
                 <div class="user-sidebar-body">
                     <ul class="user-sidbar-link">
                         <li>
-                            <span class="subtitle" style="font-weight:bold;">General Information</span>
+                            <span class="subtitle" style="font-weight:bold;">@lang('General Information')</span>
                         </li>
                         <li>
                             <a class="active" style="font-weight:bold;;text-decoration:none" href="{{ url('/admin/dashboard') }}">
                                 <span class="icon"><i class="fas fa-chart-line" style="font-size:16px;color:#D5924D"></i></span>
-                                Dashboard</a>
+                                @lang('Dashboard')</a>
                         </li>
 
                         <li>
-                            <span class="subtitle" style="font-weight:bold">Management</span>
+                            <span class="subtitle" style="font-weight:bold">@lang('Management')</span>
                         </li>
                         <li>
                             <a class="" style="font-weight:bold;;text-decoration:none" href="{{ url('/admin/manage-listings') }}">
                                 <span class="icon"><i class="fas fa-globe" style="font-size:16px;color:#D5924D"></i></span>
-                                Land Management</a>
+                                @lang('Land Management')</a>
                         </li>
                         <li>
                             <a class="" style="font-weight:bold;;text-decoration:none" href="{{ url('/admin/manage-clients') }}">
                                 <span class="icon"><i class="fas fa-users" style="font-size:16px;color:#D5924D"></i></span>
-                                Client Management</a>
+                                @lang('Client Management')</a>
                         </li>
                         <li>
                             <a class="" style="font-weight:bold;;text-decoration:none" href="{{ url('/admin/manage-appointments') }}">
                                 <span class="icon"><i class="fas fa-calendar" style="font-size:16px;color:#D5924D"></i></span>
-                                Appointment Scheduling</a>
+                                @lang('Appointment Scheduling')</a>
                         </li>
                         <li>
-                            <span class="subtitle" style="font-weight:bold">Account Information</span>
+                            <span class="subtitle" style="font-weight:bold">@lang('Account Information')</span>
                         </li>
                         <li>
                             <a class="" style="font-weight:bold;;text-decoration:none" href="{{ url('/admin/change-password') }}">
                                 <span class="icon"><i class="fas fa-key" style="font-size:16px;color:#D5924D"></i></span>
-                                Change Password</a>
+                                @lang('Change Password')</a>
                         </li>
 
                         <li>
                             <a style="font-weight:bold;text-decoration:none" href="{{ url('/logout') }}">
                                 <span class="icon"><i class="fas fa-exchange-alt" style="font-size:16px;color:#D5924D"></i></span>
-                                Logout</a>
+                                @lang('Logout')</a>
                         </li>
                     </ul>
                 </div>
@@ -103,98 +104,51 @@
                     </style>
                     <div class="collapse navbar-collapse" id="navbarGeneral">
 
-                        <ul class="d-flex d-lg-none nav navbar-nav mb-2 mb-lg-0" style="border-top:1px solid white">
+                        <ul class="d-flex d-lg-none nav navbar-nav my-2 mb-lg-0" style="border-top:1px solid white">
 
                             <!--Mobile Nav Links-->
                             <li>
-                                <span class="subtitle" style="color:#00A2FE;font-size:1.5rem">General Information</span>
+                                <span class="subtitle" style="color:#d5924d;font-size:1.2rem">@lang('General Information')</span>
                             </li>
                             <li>
-                                <a class="active px-4" href="{{ url('/admin/dashboard') }}" style="text-decoration:none;color:white;margin-bottom:5px;margin-top:5px;font-size:1.2rem">
-                                    <span class="icon"><i class="fas fa-chart-line" style="color:#00A2FE;margin-right:5px"></i></span>
-                                    Dashboard</a>
+                                <a class="active px-4" href="{{ url('/admin/dashboard') }}" style="text-decoration:none;color:white;margin-bottom:5px;margin-top:5px;font-size:1rem">
+                                    <span class="icon"><i class="fas fa-chart-line" style="color:#d5924d;margin-right:5px"></i></span>
+                                    @lang('Dashboard')</a>
                             </li>
 
                             <li>
-                                <span class="subtitle" style="color:#00A2FE;font-size:1.5rem">Management</span>
+                                <span class="subtitle" style="color:#d5924d;font-size:1.2rem">@lang('Management')</span>
                             </li>
 
                             <li>
-                                <a class="px-4" href="{{ url('/admin/manage-master-plan') }}" style="text-decoration:none;color:white;margin-bottom:5px;margin-top:5px;font-size:1.2rem">
-                                    <span class="icon"><i class="fas fa-gift" style="color:#00A2FE;margin-right:5px"></i></span>
-                                    Master Plan</a>
+                                <a class="px-4" href="{{ url('/admin/manage-listings') }}" style="text-decoration:none;color:white;margin-bottom:5px;margin-top:5px;font-size:1rem">
+                                    <span class="icon"><i class="fas fa-gift" style="color:#d5924d;margin-right:5px"></i></span>
+                                    @lang('Listing Management')</a>
                             </li>
                             <li>
-                                <a class="px-4" href="{{ url('/admin/manage-plans') }}" style="text-decoration:none;color:white;margin-bottom:5px;margin-top:5px;font-size:1.2rem">
-                                    <span class="icon"><i class="fas fa-coins" style="color:#00A2FE;margin-right:5px"></i></span>
-                                    Plans Manager</a>
+                                <a class="px-4" href="{{ url('/admin/manage-clients') }}" style="text-decoration:none;color:white;margin-bottom:5px;margin-top:5px;font-size:1rem">
+                                    <span class="icon"><i class="fas fa-coins" style="color:#d5924d;margin-right:5px"></i></span>
+                                    @lang('Client Management')</a>
                             </li>
                             <li>
-                                <a class="px-4" href="{{ url('/admin/manage-users') }}" style="text-decoration:none;color:white;margin-bottom:5px;margin-top:5px;font-size:1.2rem">
-                                    <span class="icon"><i class="fas fa-users" style="color:#00A2FE;margin-right:5px"></i></span>
-                                    Users Manager</a>
+                                <a class="px-4" href="{{ url('/admin/manage-appointments') }}" style="text-decoration:none;color:white;margin-bottom:5px;margin-top:5px;font-size:1rem">
+                                    <span class="icon"><i class="fas fa-users" style="color:#d5924d;margin-right:5px"></i></span>
+                                    @lang('Appointment Schedular')</a>
                             </li>
 
                             <li>
-                                <span class="subtitle" style="color:#00A2FE;font-size:1.5rem">Finance</span>
-                            </li>
-
-                            
-                            <li>
-                                <a class="px-4" href="{{ url('/admin/manage-gateway') }}" style="text-decoration:none;color:white;margin-bottom:5px;margin-top:5px;font-size:1.2rem">
-                                    <span class="icon"><i class="fa fa-file-invoice-dollar" style="color:#00A2FE;margin-right:5px"></i></span>
-                                    Manage Gateways</a>
-                            </li>
-
-                            <li>
-                                <a class="px-4" href="{{ url('/admin/manage-memberships/all') }}" style="text-decoration:none;color:white;margin-bottom:5px;margin-top:5px;font-size:1.2rem">
-                                    <span class="icon"><i class="fa fa-file-invoice-dollar" style="color:#00A2FE;margin-right:5px"></i></span>
-                                    Memberships Request's</a>
+                                <span class="subtitle" style="color:#d5924d;font-size:1.2rem">@lang('Account Information')</span>
                             </li>
                             <li>
-                                <a class="px-4" href="{{ url('/admin/extend-memberships/all') }}" style="text-decoration:none;color:white;margin-bottom:5px;margin-top:5px;font-size:1.2rem">
-                                    <span class="icon"><i class="fa fa-file-invoice-dollar" style="color:#00A2FE;margin-right:5px"></i></span>
-                                    Extend Membership's</a>
+                                <a class="px-4" href="{{ url('/admin/change-password') }}" style="text-decoration:none;color:white;margin-bottom:5px;margin-top:5px;font-size:1rem">
+                                    <span class="icon"><i class="fas fa-question-circle" style="color:#d5924d;margin-right:5px"></i></span>
+                                    @lang('Change Password')</a>
                             </li>
                             <li>
-                                <a class="px-4" href="{{ url('/admin/manage-withdraws/all') }}" style="text-decoration:none;color:white;margin-bottom:5px;margin-top:5px;font-size:1.2rem">
-                                    <span class="icon"><i class="fas fa-cash-register" style="color:#00A2FE;margin-right:5px"></i></span>
-                                    Withdraw Request's</a>
+                                <a class="px-4" href="{{ url('/logout') }}" style="text-decoration:none;color:white;margin-bottom:5px;margin-top:5px;font-size:1rem">
+                                    <span class="icon"><i class="fas fa-exchange-alt" style="color:#d5924d;margin-right:5px"></i></span>
+                                    @lang('Logout')</a>
                             </li>
-                            <li>
-                                <a class="px-4" href="{{ url('/admin/manage-withdraw-gateways') }}" style="text-decoration:none;color:white;margin-bottom:5px;margin-top:5px;font-size:1.2rem">
-                                    <span class="icon"><i class="fas fa-cash-register" style="color:#00A2FE;margin-right:5px"></i></span>
-                                    Withdraw Gateway's</a>
-                            </li>
-
-
-                            <li>
-                                <span class="subtitle" style="color:#00A2FE;font-size:1.5rem">Account Information</span>
-                            </li>
-                            <li>
-                                <a class="px-4" href="{{ url('/admin/profile') }}" style="text-decoration:none;color:white;margin-bottom:5px;margin-top:5px;font-size:1.2rem">
-                                    <span class="icon"><i class="fas fa-user-circle" style="color:#00A2FE;margin-right:5px"></i></span>
-                                    Admin Profile</a>
-                            </li>
-                            <li>
-                                <a class="px-4" href="{{ url('/admin/change-password') }}" style="text-decoration:none;color:white;margin-bottom:5px;margin-top:5px;font-size:1.2rem">
-                                    <span class="icon"><i class="fas fa-question-circle" style="color:#00A2FE;margin-right:5px"></i></span>
-                                    Change Password</a>
-                            </li>
-                            <li>
-                                <a class="px-4" href="{{ url('/logout') }}" style="text-decoration:none;color:white;margin-bottom:5px;margin-top:5px;font-size:1.2rem">
-                                    <span class="icon"><i class="fas fa-exchange-alt" style="color:#00A2FE;margin-right:5px"></i></span>
-                                    Logout</a>
-                            </li>
-
-                            <div class="d-flex d-lg-none justify-content-center flex-row">
-                                <li class="nav-item">
-                                    <a class="btn px-4 py-2 me-3 mt-2 nav-btn1" href="{{ url('/admin/dashboard') }}">Account</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="btn px-4 py-2 me-3 mt-2 nav-btn2" href="{{ url('/logout') }}">Logout</a>
-                                </li>
-                            </div>
                         </ul>
                     </div>
                 </div>
@@ -222,8 +176,8 @@
                     }
                 </style>
                 <form class="d-none d-lg-flex flex-lg-row w-25">
-                    <a class="btn px-4 py-2 me-3 nav-btn1" href="{{ url('/admin/dashboard') }}">Account</a>
-                    <a class="btn px-4 py-2 me-3 nav-btn2" href="{{ url('/logout') }}">Logout</a>
+                    <a class="btn px-4 py-2 me-3 nav-btn1" href="{{ url('/admin/dashboard') }}">@lang('Account')</a>
+                    <a class="btn px-4 py-2 me-3 nav-btn2" href="{{ url('/logout') }}">@lang('Logout')</a>
                 </form>
             </nav>
             @yield('main')

@@ -1,7 +1,7 @@
 @extends('adminDashboard.layout.main')
 @section('main')
 @push('title')
-<title>Add Client</title>
+<title>@lang('Add Client')</title>
 @endpush
 
 <script>
@@ -19,12 +19,12 @@
 <div class="dashborad--content">
 				
 <div class="breadcrumb-area">
-  <h3 class="title">Add Client</h3>
+  <h3 class="title">@lang('Add Client')</h3>
   <ul class="breadcrumb">
       <li>
-        <a href="{{url('/user/dashboard')}}">Dashboard</a>
+        <a href="{{url('/user/dashboard')}}">@lang('Dashboard')</a>
       </li>
-      <li>Add Client</li>
+      <li>@lang('Add Client')</li>
   </ul>
 </div>
 @if(session()->has('success'))
@@ -40,21 +40,21 @@
           <form id="client-form" class="row gy-4" action="{{url('/admin/create-client')}}" method="post">
             @csrf
               <div class="col-sm-6 col-lg-4 col-xxl-4">
-                <label for="name" class="form-label">First Name</label>
+                <label for="name" class="form-label">@lang('First Name')</label>
                  @error('first_name')
                   <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
                  @enderror
                 <input type="text" id="name" name="first_name" class="form-control" value="">
               </div>
               <div class="col-sm-6 col-lg-4 col-xxl-4">
-               <label for="email" class="form-label">Middle Name</label>
+               <label for="email" class="form-label">@lang('Middle Name')</label>
                @error('middle_name')
                   <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
                  @enderror
                <input type="text" id="email" name="middle_name" class="form-control" value="" >
               </div>
               <div class="col-sm-6 col-lg-4 col-xxl-4">
-               <label for="email" class="form-label">last Name</label>
+               <label for="email" class="form-label">@lang('last Name')</label>
                @error('last_name')
                   <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
                  @enderror
@@ -62,7 +62,7 @@
               </div>
 
               <div class="col-sm-6 col-xxl-4">
-                  <label for="phone" class="form-label">Phone</label>
+                  <label for="phone" class="form-label">@lang('Phone')</label>
                   @error('phone')
                   <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
                  @enderror
@@ -71,7 +71,7 @@
                   </div>
               </div>
               <div class="col-sm-6 col-xxl-4">
-                  <label for="phone" class="form-label">Email</label>
+                  <label for="phone" class="form-label">@lang('Email')</label>
                   @error('email')
                   <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
                  @enderror
@@ -80,7 +80,7 @@
                   </div>
               </div>
               <div class="col-sm-6 col-xxl-4">
-                  <label for="phone" class="form-label">Address</label>
+                  <label for="phone" class="form-label">@lang('Address')</label>
                   @error('address')
                   <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
                  @enderror
@@ -90,21 +90,21 @@
               </div>
 
               <div class="col-sm-6 col-xxl-4">
-                  <label for="phone" class="form-label">Is Client VIP?</label>
+                  <label for="phone" class="form-label">@lang('Is Client VIP')?</label>
                   @error('is_vip')
                   <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
                  @enderror
                   <div class="input-group">
                   <select name="is_vip" class="form-control">
-                    <option value="no">No</option>
-                    <option value="yes" >Yes</option>
+                    <option value="no">@lang('No')</option>
+                    <option value="yes" >@lang('Yes')</option>
                   </select>    
                   </div>
               </div>
 
               <div class="col-sm-12">
                   <div class="text-end">
-                    <button type="submit" class="cmn--btn"><span id="form-btn-text" class="" >Add</span> <div id="loader" class="d-none">
+                    <button type="submit" class="cmn--btn"><span id="form-btn-text" class="" >@lang('Add')</span> <div id="loader" class="d-none">
                      <div class="spinner-border" role="status">
                              <span class="sr-only">Loading...</span>
                          </div>

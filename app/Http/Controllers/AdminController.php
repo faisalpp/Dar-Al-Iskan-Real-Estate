@@ -21,7 +21,7 @@ class AdminController extends Controller
             $pass = Hash::check($request['password'],$getUser->password);
            if($pass){ 
             $user = [
-             'userId'=>$getUser->user_id,
+             'id'=>$getUser->id,
             ]; 
 
             $request->session()->put('user',$user);

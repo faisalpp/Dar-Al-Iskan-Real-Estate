@@ -1,7 +1,7 @@
 @extends('adminDashboard.layout.main')
 @section('main')
 @push('title')
-<title>Client Management</title>
+<title>@lang('Client Management')</title>
 @endpush
 
 <!-- <script>
@@ -44,13 +44,13 @@ $.ajax({
 
 <div class="dashborad--content">
 				<div class="breadcrumb-area">
-  <h3 class="title">Client Management</h3>
+  <h3 class="title">@lang('Client Management')</h3>
   <ul class="breadcrumb">
       <li>
-        <a href="{{url('/admin/dashboard')}}">Dashboard</a>
+        <a href="{{url('/admin/dashboard')}}">@lang('Dashboard')</a>
       </li>
 
-      <li>Client Management</li>
+      <li>@lang('Client Management')</li>
   </ul>
 </div>
 
@@ -90,51 +90,48 @@ $.ajax({
 }
 </style>
 
-<div class="d-flex align-items-center py-3">
-  <div class="d-flex justify-content-start flex-row w-100" >
-  <a class="btn px-3 py-2 me-3 nav-btn1" style="border-radius:5px;font-size:14px;font-weight:bold" href="{{ url('/admin/add-client') }}">Add Client</a>
+<div class="d-flex flex-column-reverse flex-lg-row justify-content-center align-items-center py-3">
+  <div class="d-flex justify-content-start flex-row mt-2" >
+  <a class="btn px-3 py-2 me-3 nav-btn1" style="border-radius:5px;font-size:0.87rem;font-weight:bold" href="{{ url('/admin/add-client') }}">@lang('Add Client')</a>
 </div>
  
   <!-- Search Bar -->
   <form action="" class="d-flex align-items-center justify-content-end flex-row w-100" >
-  <h5 style="font-size:18px" >Filters:</h5> 
-  <select name="filter" type="text" style="height:35px;width:30%;outline:none;margin-left:5px;margin-right:5px">
-    <option value="all" >All Clients</option>
-    <option value="first_name" >First Name</option>
-    <option value="last_name" >Last Name</option>
-    <option value="middle_name" >Middle Name</option>
-    <option value="yes" >Vip</option>
-    <option value="no" >General</option>
-    <option value="email" >Email</option>
-    <option value="phone" >Phone No</option>
+  <h5 style="font-size:18px" >@lang('Filters'):</h5> 
+  <select name="filter" type="text" style="height:35px;width:fit-content;outline:none;margin-left:5px;margin-right:5px">
+    <option value="all" >@lang('All Clients')</option>
+    <option value="first_name" >@lang('First Name')</option>
+    <option value="last_name" >@lang('Last Name')</option>
+    <option value="middle_name" >@lang('Middle Name')</option>
+    <option value="yes" >@lang('Vip')</option>
+    <option value="no" >@lang('General')</option>
+    <option value="email" >@lang('Email')</option>
+    <option value="phone" >@lang('Phone No')</option>
    </select>
-   <input type="text" name="search" style="height:35px;width:50%;outline:none" value="{{$search}}" />
+   <input type="text" name="search" style="height:35px;width:20%;outline:none" value="{{$search}}" />
    <button class="btn px-3 py-2" style="background-color:#D5924D;margin-left:10px;border-radius:5px;height:40px" href="{{ url('/admin/dashboard') }}"><i class="fas fa-search" style="color:white;font-size:14px"></i></button>
   </form>
-  
-
+  <button data-bs-toggle="modal" data-bs-target="#client-export" type="button" class="btn btn-success px-3 py-2" style="margin-left:10px;border-radius:5px;height:40px" href="{{ url('/admin/dashboard') }}"><i class="fas fa-print" style="color:white;font-size:18px"></i></button>
 </div>
+
  @if(count($clients) > 0)
+ <div style="overflow-x:scroll" >
 <table class="table bg--body">
 			  <thead>
 				  <tr>
-					<th>Client Name</th>
-					<th>Type</th>
-					<th>Email</th>
-					<th>Phone</th>
-					<th>Date</th>
-					<th>Listings</th>
+					<th>@lang('Client Name')</th>
+					<th>@lang('Type')</th>
+					<th>@lang('Email')</th>
+					<th>@lang('Phone')</th>
+					<th>@lang('Date')</th>
+					<th>@lang('Listings')</th>
 				  </tr>
 			  </thead>
 			  <tbody>
        @foreach($clients as $client)
 			  <tr>
-						<td data-label="No">
-							<div>
-							<span >{{$client->first_name}} {{$client->middle_name}} {{$client->last_name}}</span>
-							</div>
-						</td>
-						<td data-label="No">
+						<td style="min-width:100px" >{{$client->first_name}} {{$client->middle_name}} {{$client->last_name}}</td>
+						<td style="min-width:100px">
 							<div class="d-flex justify-content-center" >
               @if($client->is_vip === 'yes')
                <div title="VIP" style="font-weight:bold;background-color:#800080;border-radius:100%;color:white;width:fit-content;padding:3px 8px 5px 8px" ><i class="fas fa-crown" style="font-size:12px" ></i></div>
@@ -143,22 +140,14 @@ $.ajax({
               @endif
 							</div>
 						</td>
-            <td data-label="No">
-							<div>
-							<span >{{$client->email}}</span>
-							</div>
+            <td style="min-width:100px">
+							{{$client->email}}
 						</td>
-            <td data-label="No">
-							<div>
-							<span >{{$client->phone}}</span>
-							</div>
+            <td style="min-width:130px">{{$client->phone}}</td>
+            <td style="min-width:100px">
+							{{date_format($client->created_at,"d M Y")}}
 						</td>
-            <td data-label="No">
-							<div>
-							<span >{{date_format($client->created_at,"d M Y")}}</span>
-							</div>
-						</td>
-            <td data-label="No">
+            <td style="min-width:100px">
 							<div class="d-flex justify-content-center" >
 							<a title="View Client" href="{{url('/admin/view-client')}}/{{$client->id}}" style="border:none;font-weight:bold;background-color:orange;border-radius:100%;color:white;width:fit-content;padding:3px 9px 5px 9px" ><i class="fas fa-eye" style="font-size:14px" ></i></a>	
               <form id="client-form-{{$client->id}}" onSubmit="DeleteClient({{$client->id}})" action="{{url('/admin/delete-client')}}" method="post" class="mx-2" >
@@ -177,13 +166,72 @@ $.ajax({
         </tr>
         @endforeach
 </table>
+</div>
+{{ $clients->links() }}
 @else
  <div class="d-flex justify-content-center align-items-center w-100" style="height: calc(100vh - 400px)" >
-   <h4>No Client Found!</h4>
- </div>
+   <h4>@lang('No Client Found')!</h4>
+ </div> 
 @endif
 
-{{ $clients->links() }}
+</div>
+
+<script>
+  $(document).ready(function(){
+    $('#print_options').on('change', function(){
+      const option = $('#print_options').val();
+      console.log(option)
+      if(option === 'all-time'){
+        $('#date_start').css('display','none')
+        $('#date_end').css('display','none')
+      }else{
+        $('#date_start').css('display','flex')
+        $('#date_end').css('display','flex')
+      }
+    });
+  });
+</script>
+
+<script>
+$(document).ready(function(){
+ $('#pdf-form').on('submit',function(){
+  $('#loader-download').removeClass('d-none');
+   $('#download-txt').addClass('d-none');  
+ });
+});
+</script>
+
+ <!-- Invest Modal -->
+<div class="modal fade" id="client-export">
+ <div class="modal-dialog">
+  <div class="modal-content">
+   <form action="{{url('/admin/export-clients-pdf')}}" method="POST" id="pdf-form" style="gap:10px" class="d-flex me-5 flex-column align-items-center justify-content-center my-2 mx-4" >
+   @csrf
+   <div class="d-flex flex-column align-items-center" style="width:50%" >
+    <h4 style="font-size:16px;align-self:start" >@lang('Filter')</h4>
+   <select id="print_options" name="print-options" class="form-control" style="width:100%" >
+    <option value="all-time">@lang('All Time')</option>
+    <option value="by-date" >@lang('By Date')</option>
+   </select>
+</div>
+   <div id="date_start" class="flex-column align-items-center" style="display:none;width:50%" >
+    <h4 style="font-size:16px;align-self:start" >@lang('Start Date')</h4>
+    <input type="date" name="date_start" class="form-control" style="width:100%" />
+   </div>
+   <div id="date_end" class="flex-column align-items-center" style="display:none;width:50%" >
+    <h4 style="font-size:16px;align-self:start" >@lang('End Date')</h4>
+    <input type="date" name="date_end" class="form-control" style="width:100%" />    
+   </div>
+   <div class="d-flex me-5 w-100 justify-content-center" >
+    <button class="btn px-3 py-2" style="color:white;background-color:#D5924D;margin-left:10px;border-radius:5px;height:40px">
+     <span id="download-txt" >@lang('Download')</span>
+     <div id="loader-download" class="d-none">
+      <div class="spinner-border" style="width:14px;height:14px" role="status"><span class="sr-only">Loading...</span></div>
+     </div>
+    </button>
+   </div> 
+  </form> 
+ </div>
 </div>
 
 @endsection
