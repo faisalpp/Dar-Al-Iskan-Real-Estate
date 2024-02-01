@@ -12,8 +12,9 @@
     @vite(['resources/css/bootstrap.min.css', 'resources/css/animate.css', 'resources/css/lightbox.min.css', 'resources/css/odometer.css', 'resources/css/owl.min.css', 'resources/css/main.css', 'resources/css/toastr.min.css'])
     <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
-           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>       
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Include toastr CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
@@ -66,6 +67,13 @@
                         <li>
                             <span class="subtitle" style="font-weight:bold">@lang('Account Information')</span>
                         </li>
+                        @if(session()->get('user')['role'] === '1')
+                        <li>
+                            <a class="" style="font-weight:bold;;text-decoration:none" href="{{ url('/admin/manage-users') }}">
+                                <span class="icon"><i class="fas fa-user-edit" style="font-size:16px;color:#D5924D"></i></span>
+                                @lang('Manage Users')</a>
+                        </li>
+                        @endif
                         <li>
                             <a class="" style="font-weight:bold;;text-decoration:none" href="{{ url('/admin/change-password') }}">
                                 <span class="icon"><i class="fas fa-key" style="font-size:16px;color:#D5924D"></i></span>
@@ -104,8 +112,12 @@
                     </style>
                     <div class="collapse navbar-collapse" id="navbarGeneral">
 
+                        
                         <ul class="d-flex d-lg-none nav navbar-nav my-2 mb-lg-0" style="border-top:1px solid white">
-
+                            
+                        <div class="d-flex d-lg-none justify-content-end flex-lg-row my-2 w-100" >
+                      <span style="color:white;font-weight:700;background-color:#d5924d;border-radius:10%" class="px-2 py-2" >{{session()->get('user')['user_name']}}</span>
+                    </div>
                             <!--Mobile Nav Links-->
                             <li>
                                 <span class="subtitle" style="color:#d5924d;font-size:1.2rem">@lang('General Information')</span>
@@ -139,6 +151,13 @@
                             <li>
                                 <span class="subtitle" style="color:#d5924d;font-size:1.2rem">@lang('Account Information')</span>
                             </li>
+                            @if(session()->get('user')['role'] === '1')
+                            <li>
+                                <a class="px-4" href="{{ url('/admin/manage-users') }}" style="text-decoration:none;color:white;margin-bottom:5px;margin-top:5px;font-size:1rem">
+                                    <span class="icon"><i class="fas fa-user-edit" style="color:#d5924d;margin-right:5px"></i></span>
+                                    @lang('Manage Users')</a>
+                            </li>
+                            @endif
                             <li>
                                 <a class="px-4" href="{{ url('/admin/change-password') }}" style="text-decoration:none;color:white;margin-bottom:5px;margin-top:5px;font-size:1rem">
                                     <span class="icon"><i class="fas fa-question-circle" style="color:#d5924d;margin-right:5px"></i></span>
@@ -175,10 +194,9 @@
                         color: white;
                     }
                 </style>
-                <form class="d-none d-lg-flex flex-lg-row w-25">
-                    <a class="btn px-4 py-2 me-3 nav-btn1" href="{{ url('/admin/dashboard') }}">@lang('Account')</a>
-                    <a class="btn px-4 py-2 me-3 nav-btn2" href="{{ url('/logout') }}">@lang('Logout')</a>
-                </form>
+                <div class="d-none d-lg-flex flex-lg-row my-2" style="min-width:110px">
+                  <span style="color:white;font-weight:700;background-color:#d5924d;border-radius:10%" class="px-2 py-2" >{{session()->get('user')['user_name']}}</span>
+                </div>
             </nav>
             @yield('main')
         </article>

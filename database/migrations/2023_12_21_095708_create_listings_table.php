@@ -30,6 +30,8 @@ return new class extends Migration
             $table->string('no_floors')->default('0');
             $table->string('no_kitchens')->default('0');
             $table->json('media')->nullable();
+            $table->string('created_by');
+            $table->string('updated_by');
             $table->timestamps();
         });
     }

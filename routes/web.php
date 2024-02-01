@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminViews;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ListingController;
@@ -26,10 +27,6 @@ Route::middleware(['localization'])->group(function () {
 
  Route::post('/change-language',[LanguageController::class,'ChangeLanguage']);
  Route::view('/','login');
- Route::view('/about','about');
- Route::view('/contact','contact');
- Route::view('/privacy','policy');
- Route::view('/terms','terms');
  Route::get('/register',[AdminController::class,'RegisterView']);
  // Auth APi's
  Route::post('/login',[AdminController::class,'Login']);
@@ -56,7 +53,18 @@ Route::middleware(['localization'])->group(function () {
   Route::post('/admin/update-client',[ClientController::class,'UpdateClient']);
   Route::post('/admin/delete-client',[ClientController::class,'DeleteClient']);
   Route::post('/admin/get-clients',[ClientController::class,'GetClients']);
- 
+  
+  //   Manage Users
+  Route::middleware(['isSuperAdmin'])->group(function () {
+    Route::get('/admin/manage-users',[AdminViews::class,'ManageUsers']);
+    Route::get('/admin/add-user',[AdminViews::class,'AddUser']);
+    Route::post('/admin/create-user',[UserController::class,'CreateUser']);
+    Route::post('/admin/update-user',[UserController::class,'UpdateUser']);
+    Route::post('/admin/delete-user',[UserController::class,'DeleteUser']);
+    Route::post('/admin/ban-user',[UserController::class,'BanUser']);
+    Route::post('/admin/unban-user',[UserController::class,'UnBanUser']);
+  });
+
   // Media Routes
   Route::post('/admin/upload-media',[MediaController::class,'UploadMedia']);
   Route::post('/admin/delete-media',[MediaController::class,'DeleteMedia']);
@@ -73,6 +81,7 @@ Route::middleware(['localization'])->group(function () {
   //  Pdf Docuement Export Api's
   Route::post('/admin/export-listings-pdf',[PdfController::class,'ExportListings']);
   Route::post('/admin/export-clients-pdf',[PdfController::class,'ExportClients']);
+  Route::get('/admin/export-listing-pdf/{id}',[PdfController::class,'ExportListing']);
  });
 
 });

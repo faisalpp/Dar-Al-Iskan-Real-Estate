@@ -26,8 +26,6 @@ class PdfController extends Controller
             ->get();
           }
         return view('pdf.listingsPdf',compact('listings'));
-        // $pdf = PDF::loadView('pdf.listingsPdf', ['listings'=>$listings]);
-        // return $pdf->download('listings.pdf');
     }
     
     public function ExportClients(Request $request){
@@ -37,7 +35,19 @@ class PdfController extends Controller
         $clients = Client::whereBetween('created_at', [\Carbon\Carbon::parse($request['date_start']), \Carbon\Carbon::parse($request['date_end'])])->get();
       }
       return view('pdf.clientPdf',compact('clients'));
-    //   $pdf = PDF::loadView('pdf.clientPdf', ['clients'=>$clients]);
-    //   return $pdf->download('clients.pdf');
+    }
+
+    public function ExportListing(Request $request){
+      try{
+        $listing = Listing::where('id',$request['id'])->first();
+        $full_name = 'Guest';
+        if($listing->client !== 'Guest'){
+          $client = Client::where('id', $listing->client)->first();
+          $full_name = $client->first_name . ' ' . $client->middle_name . ' ' . $client->last_name;
+        }
+        return view('pdf.listingForm',compact('listing','full_name'));
+      }catch(error){
+        return abort(500);
+      }
     }
 }

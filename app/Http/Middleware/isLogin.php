@@ -17,7 +17,7 @@ class isLogin
     public function handle(Request $request, Closure $next)
     {
         if($request->session()->has('user')){
-            return $next($request);
+                return $next($request);
          }else{
              return redirect('/');
          }

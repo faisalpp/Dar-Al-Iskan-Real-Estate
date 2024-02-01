@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Admin;
 use App\Models\Client;
 use App\Charts\Statistics;
 use App\Charts\PieStatistics;
@@ -11,22 +12,6 @@ use Illuminate\Http\Request;
 class AdminViews extends Controller
 {
   public function Dashboard(){
-
-    $today = Listing::whereMonth('created_at',today())->count();
-    $yesterday = Listing::whereDate('created_at', today()->subDays(1))->count();
-  
-    $stat = new Statistics;
-    $stat->labels(['Today','Yesterday']);
-    $stat->dataset('Day Chart','line',[$today,$yesterday])->backgroundColor('#B2E2FF')->color('#7FCEFF');
-    
-    $sold = Listing::where('status','Sold')->count();
-    $sell = Listing::where('status','On Sell')->count();
-    
-    $stat2 = new PieStatistics;
-    $stat2->labels(['Sold','On Sell']);
-    $stat2->dataset('Sell Analytics','pie',[$sold,$sell])->backgroundColor(collect(['#7d5fff','#32ff7e']))->color('#7158e2');
-
-
     try{
       // $total_clients = Client::count();
       $total_vip_clients = Client::where('is_vip','yes')->count();
@@ -35,7 +20,7 @@ class AdminViews extends Controller
       $total_sold_listings = Listing::where('status','Sold')->count();
       $latest_listings = Listing::limit(4)->get();
       $latest_clients = Client::limit(4)->get();
-      return view('adminDashboard.index',compact('stat2','stat','total_sold_listings','total_onsell_listings','latest_listings','latest_clients','total_vip_clients','total_org_clients'));
+      return view('adminDashboard.index',compact('total_sold_listings','total_onsell_listings','latest_listings','latest_clients','total_vip_clients','total_org_clients'));
     }catch(error){
       return abort(500);
     }
@@ -118,6 +103,7 @@ class AdminViews extends Controller
     }
     return view('adminDashboard.ManageClient',compact('clients','search'));
   }
+
   
   public function AddClient(){
       return view('adminDashboard.AddClient');
@@ -128,6 +114,35 @@ class AdminViews extends Controller
     $listings = Listing::where('id',10)->get();
     return view('adminDashboard.ViewClientDetail',compact('client','listings'));
   }
+
+  public function ManageUsers(Request $request){
+   
+    $search = $request['search'] ?? '';
+    $filter = $request['filter'];
+     if($search !== ''){
+       try{
+         $users = Admin::where($filter,$search)->where('role','0')->paginate(20);
+        }catch(error){
+          return abort(500);
+        }
+     }else{
+      try{
+       $users = Admin::where('role','0')->paginate(20);
+      }catch(error){
+       return abort(500);
+      }
+    }
+    return view('adminDashboard.ManageUsers',compact('users','search'));
+  }
+
+  public function AddUser(){
+    return view('adminDashboard.AddUser');
+}
+
+public function ViewUser(Request $request){
+  $user = Admin::where('id',$request['id'])->where('role','0')->first();
+  return view('adminDashboard.ViewUserDetail',compact('user'));
+}
 
   public function ManageAppointments(){
    

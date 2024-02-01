@@ -495,19 +495,48 @@ $(document).ready(function() {
                </div>
               </div>
 
-              <div class="col-sm-12 my-4">
-                  <div class="text-end">
-                    <button onclick="UpdateListing()" type="button" class="cmn--btn"><span id="form-btn-text" class="" >Update</span> <div id="loader" class="d-none">
+              <div class="d-flex justify-content-end w-100 col-sm-12 my-4">
+                  <div class="text-end mx-2">
+                    <button onclick="UpdateListing()" type="button" class="btn btn-primary"><span id="form-btn-text" class="" >Update</span> <div id="loader" class="d-none">
                      <div class="spinner-border" role="status">
                              <span class="sr-only">Loading...</span>
                          </div>
                      </div>
                     </button>
                   </div>
+                  <div class="text-end">
+                    <a title="print" href="{{url('/admin/export-listing-pdf')}}/{{$listing->id}}" class="btn btn-success"><span id="form-btn-text"><i class="fas fa-print" style="font-size:1.2rem" ></i></span></a>
+                  </div>
               </div>
 
             </form>
+           <div class="d-flex justify-content-evenly w-100" >
+             <div class="d-flex flex-column align-items-center col-sm-6 col-lg-2 col-xxl-4 mb-3">
+               <label for="phone" class="form-label" style="font-weight:bold">@lang('Created By')</label>
+               <div class="input-group">
+                <input type="text" readonly class="form-control" value="{{$listing->created_by}}">
+               </div>
+              </div>
+             <div class="d-flex flex-column align-items-center col-sm-6 col-lg-2 col-xxl-4 mb-3">
+               <label for="phone" class="form-label" style="font-weight:bold" >@lang('Created At')</label>
+               <div class="input-group">
+                <input type="text" readonly class="form-control" value="{{date_format($listing->created_at,'d M Y')}}">
+               </div>
+              </div>
+             <div class="d-flex flex-column align-items-center col-sm-6 col-lg-2 col-xxl-4 mb-3">
+               <label for="phone" class="form-label" style="font-weight:bold">@lang('Updated By')</label>
+               <div class="input-group">
+                <input style="width:fit-content" type="text" readonly class="form-control" value="{{$listing->updated_by}}">
+               </div>
+              </div>
+             <div class="d-flex flex-column align-items-center col-sm-6 col-lg-2 col-xxl-4 mb-3">
+               <label for="phone" class="form-label" style="font-weight:bold">@lang('Updated At')</label>
+               <div class="input-group">
+                <input type="text" readonly class="form-control" value="{{date_format($listing->updated_at,'d M Y')}}">
+               </div>
+              </div>
 
+            </div>
             <form id="file-picker" enctype='multipart/form-data' >
                 <h4>@lang('Land Media')</h4>
                 @error('media')

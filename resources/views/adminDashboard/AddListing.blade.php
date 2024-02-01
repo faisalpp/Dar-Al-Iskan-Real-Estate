@@ -344,7 +344,7 @@
                   <select id="searched-client" name="client" class="form-control">
                     <option value="guest" >@lang('Guest')</option>
                   </select>
-                  <button type="button" style="height:50px;width:33%;font-size:12px;outline:none;border-radius:2px" data-bs-toggle="modal" data-bs-target="#client-modal" class="btn btn-primary">Find</button>                            
+                  <button type="button" style="height:40px;width:33%;font-size:12px;outline:none;border-radius:2px" data-bs-toggle="modal" data-bs-target="#client-modal" class="btn btn-primary">Find</button>                            
                  </div>
               </div>
 

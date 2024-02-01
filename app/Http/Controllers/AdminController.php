@@ -16,12 +16,14 @@ class AdminController extends Controller
           'password'=>'required'
         ]);
 
-        $getUser = Admin::where('email',$request['email'])->first();
-        if($getUser){
+        $getUser = Admin::where('email',$request['email'])->orWhere('user_name',$request['email'])->first();
+        if($getUser && $getUser->status === '1'){
             $pass = Hash::check($request['password'],$getUser->password);
            if($pass){ 
             $user = [
              'id'=>$getUser->id,
+             'user_name'=>$getUser->user_name,
+             'role'=>$getUser->role,
             ]; 
 
             $request->session()->put('user',$user);

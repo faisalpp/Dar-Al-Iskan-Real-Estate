@@ -41,6 +41,8 @@ class ListingController extends Controller
        $listing->no_floors = $request['no_floors'];
        $listing->no_kitchens = $request['no_kitchens'];
        $listing->media = $request['media'];
+       $listing->created_by = $request->session()->get('user')['user_name'];
+       $listing->updated_by = $request->session()->get('user')['user_name'];
        $listing->save();
        session()->flash('success','Listing Successfully Created!');
        return response()->json(['message'=>'Ok']) ;
@@ -85,7 +87,8 @@ class ListingController extends Controller
          'no_majlis' => $request['no_majlis'],
          'no_floors' => $request['no_floors'],
          'no_kitchens' => $request['no_kitchens'],
-         'media' => $request['media']
+         'media' => $request['media'],
+         'updated_by' => $request->session()->get('user')['user_name']
        ]);
        session()->flash('success','Listing Successfully Updated!');
        return redirect('/admin/manage-listings');

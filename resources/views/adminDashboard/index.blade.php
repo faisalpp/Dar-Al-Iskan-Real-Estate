@@ -98,20 +98,6 @@
   </div> 
 </div> 
 
-<!-- Charts -->
-<div class="d-flex flex-column flex-lg-row container-fluid" >
- <div class="col-12 col-lg-6" >
-	 {!! $stat->container() !!}
-	 {!! $stat->script() !!}
- </div>
- <div class="col-12 col-lg-6" >
-	 {!! $stat2->container() !!}
-	 {!! $stat2->script() !!}
- </div>
-</div>
-
-
-
 <div class="my-5" >
  <h4 style="font-weight:bold">@lang('Latest Listings')</h4>
 </div>
@@ -165,8 +151,8 @@
 </table>
 </div>
 @else
- <div class="d-flex justify-content-center align-items-center w-100" style="height: calc(100vh - 500px)" >
-   <h4>@lang('No Clients Found!')</h4>
+ <div class="d-flex justify-content-center align-items-center w-100" style="height: calc(100vh - 600px)" >
+   <h4>@lang('No Listings Found!')</h4>
  </div>
 @endif
 
@@ -225,7 +211,7 @@
 </table>
 </div>
 @else
- <div class="d-flex justify-content-center align-items-center w-100" style="height: calc(100vh - 500px)" >
+ <div class="d-flex justify-content-center align-items-center w-100" style="height: calc(100vh - 600px)" >
    <h4>@lang('No Clients Found!')</h4>
  </div>
 @endif

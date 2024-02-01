@@ -34,11 +34,11 @@
                             @endif
                             @csrf
                             <div class="col-sm-12">
-                                <label for="email" class="form-label">@lang('Your Email')</label>
+                                <label for="email" class="form-label">@lang('UserName Or Email')</label>
                                 @error('email')
                                      <label style="color:red;font-size:0.7rem" for="fullname-error" class="form-label text-sm ">{{$message}}</label>    
                                     @enderror
-                                <input type="email" name="email" id="email" class="form-control">
+                                <input type="text" name="email" id="email" class="form-control">
                             </div>
                             <div class="col-sm-12">
                                 <label for="password" class="form-label">@lang('Your Password')</label>
